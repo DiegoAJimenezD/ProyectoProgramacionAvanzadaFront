@@ -13,3 +13,4 @@ export class AppComponent {
   title = 'proyectoFinal';
   footer = 'Universidad del Quindío - 2024-2';
 }
+
