@@ -1,1 +1,52 @@
-<p>crear-eventos works!</p>
+<form [formGroup]="crearEventoForm" (ngSubmit)="crearEvento()" novalidate="">
+    <div>
+        <label>Nombre: </label>
+        <input type="text" formControlName="nombre"/>
+    </div>
+    <div>
+        <label>Descripción: </label>
+        <textarea formControlName="descripcion"></textarea>   
+    </div>
+    <div>
+        <label>Tipo: </label>
+        <select formControlName="tipo" >
+            <option value="">Seleccione un tipo</option>
+            @for (item of tiposDeEvento; track $index) {
+                <option value="{{item}}">{{item}}</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Dirección: </label>
+        <input type="text" formControlName="direccion"/>
+    </div>
+    <div>
+        <label>Ciudad: </label>
+        <input type="text" formControlName="ciudad"/>
+    </div>
+    
+    <div formArrayName="localidades">
+        <div *ngFor="let localidad of localidades.controls; let i = index" [formGroupName]="i">
+            <label>Nombre Localidad: </label>
+            <input formControlName="nombre" placeholder="Nombre de la localidad"/>
+            <label>Precio: </label>
+            <input type="number" formControlName="precio" placeholder="Precio"/>
+            <label>Cantidad: </label>
+            <input type="number" formControlName="cantidad" placeholder="Cantidad"/>
+            <button type="button" (click)="eliminarLocalidad(i)">Eliminar</button>
+        </div>
+    </div>
+    <button type="button" (click)="agregarLocalidad()">Agregar Localidad</button>
+
+    <div>
+        <label>Imagen evento: </label>
+        <input type="file" (change)="onFileChange($event, 'portada')" />
+     </div>
+     
+     
+     <div>
+        <label>Imagen localidades: </label>
+        <input type="file" (change)="onFileChange($event, 'localidades')" />
+     </div>
+    <button type="submit" >Crear evento</button>
+ </form>
