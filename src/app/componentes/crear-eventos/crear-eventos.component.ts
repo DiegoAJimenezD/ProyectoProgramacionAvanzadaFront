@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormArray } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
@@ -60,7 +58,12 @@ export class CrearEventosComponent {
 
   // Método para eliminar una localidad por índice
   eliminarLocalidad(index: number) {
-    this.localidades.removeAt(index);
+    if (this.localidades.length > 1) {
+      this.localidades.removeAt(index);
+    } else {
+      // Aquí puedes mostrar un mensaje o realizar otra acción si intentan eliminar la última localidad
+      alert('Debe haber al menos una localidad.');
+    }
   }
 
 

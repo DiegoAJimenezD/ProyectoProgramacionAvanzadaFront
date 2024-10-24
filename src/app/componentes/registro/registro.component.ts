@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
@@ -29,7 +29,7 @@ private crearFormulario() {
     password: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(7)]],
     confirmaPassword : ['', [Validators.required, Validators.maxLength(10), Validators.minLength(7)]]
   },
-  { validators: this.passwordsMatchValidator } //as AbstractControlOptions
+  { validators: this.passwordsMatchValidator } as AbstractControlOptions
 );
 }
 
