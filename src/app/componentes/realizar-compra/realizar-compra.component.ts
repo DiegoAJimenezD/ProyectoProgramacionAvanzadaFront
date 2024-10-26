@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-realizar-compra',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './realizar-compra.component.css'
 })
 export class RealizarCompraComponent {
+
+  compraForm!: FormGroup;
+
+
+  constructor(private formBuilder: FormBuilder) {
+   }
+
+
 
 }

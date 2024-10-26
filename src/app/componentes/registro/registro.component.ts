@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
+
 @Component({
  selector: 'app-registro',
  standalone: true,
