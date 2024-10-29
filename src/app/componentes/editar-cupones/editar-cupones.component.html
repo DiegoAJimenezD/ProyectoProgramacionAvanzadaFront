@@ -1,1 +1,29 @@
-<p>editar-cupones works!</p>
+<form [formGroup]="editarCuponForm" (ngSubmit)="editarCupon()" novalidate="">
+    <h1>EDITAR CUPONES</h1>
+    <div>
+        <label>Nombre del cupon: </label>
+        <input type="text" formControlName="nombre"/>
+    </div>
+    <div>
+        <label>Código del cupon: </label>
+        <input type="text" formControlName="codigo"> 
+    </div>
+    <div>
+        <label>Porcentaje de descuento del cupon: </label>
+        <input type="number" formControlName="porcentaje"> 
+    </div>
+    <div>
+        <label>Fecha de vencimiento: </label>
+        <input type="date" formControlName="fecha_vencimiento"> 
+    </div>
+    <div>
+        <label>Tipo: </label>
+        <select formControlName="tipo" >
+            <option value="">Seleccione un tipo</option>
+            @for (item of tiposDeCupon; track $index) {
+                <option value="{{item}}">{{item}}</option>
+            }
+        </select>
+    </div>
+    <button type="submit" >Crear cupon</button>
+ </form>
