@@ -1,0 +1,23 @@
+<form [formGroup]="compraForm" (ngSubmit)="realizarCompra()" novalidate>
+    <div>
+        <label>Entradas general: </label>
+        <select formControlName="general" >
+            <option value="">Seleccione el número de entradas</option>
+            @for (item of general; track $index) {
+                <option value="{{item}}">{{item}}</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Entradas VIP: </label>
+        <select formControlName="vip" >
+            <option value="">Seleccione el número de entradas</option>
+            @for (item of vip; track $index) {
+                <option value="{{item}}">{{item}}</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit">Comprar ahora</button>
+</form>
