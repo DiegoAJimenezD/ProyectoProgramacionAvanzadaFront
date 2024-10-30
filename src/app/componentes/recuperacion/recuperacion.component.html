@@ -1,1 +1,22 @@
-<p>recuperacion works!</p>
+<div class="card col-5 mx-auto">
+    <div class="card-header">
+        Recuperar cuenta
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center">Recuperar la cuenta</h5>
+        <form [formGroup]="recuperarCuenta" (ngSubmit)="recuperar()" novalidate="">
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleInputEmail1" class="form-label">Correo electronico::</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    formControlName="email">
+            </div>
+            <hr>
+            <div class="mb-3 text-center">
+                <button type="submit" [disabled]="recuperarCuenta.invalid" class="btn btn-success col-10">Recuperar</button>
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" [disabled]="recuperarCuenta.invalid" class="btn btn-success col-10">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

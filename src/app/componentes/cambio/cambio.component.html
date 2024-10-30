@@ -1,1 +1,26 @@
-<p>cambio works!</p>
+<div class="card col-5 mx-auto">
+    <div class="card-header">
+        Cambiar Contraseña
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center">Cambio de contraseña</h5>
+        <form [formGroup]="cambioPassword" (ngSubmit)="cambiar()" novalidate="">
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleInputEmail1" class="form-label">Código:</label>
+                <input type="text" class="form-control" id="codigo" aria-describedby="codigoHelp"
+                    formControlName="email">
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleInputPassword1" class="form-label">Contraseña nueva:</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleInputPassword1" class="form-label">Confirmar contraseña:</label>
+                <input type="password" class="form-control" id="confirmarPassword" formControlName="password">
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" [disabled]="cambioPassword.invalid" class="btn btn-success col-10">Cambiar contraseña</button>
+            </div>
+        </form>
+    </div>
+</div>
