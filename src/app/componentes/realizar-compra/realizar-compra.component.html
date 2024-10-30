@@ -1,23 +1,35 @@
-<form [formGroup]="compraForm" (ngSubmit)="realizarCompra()" novalidate>
-    <div>
-        <label>Entradas general: </label>
-        <select formControlName="general" >
-            <option value="">Seleccione el número de entradas</option>
-            @for (item of general; track $index) {
-                <option value="{{item}}">{{item}}</option>
-            }
-        </select>
+<div class="col-11 mx-auto py-1 mb-3">
+    <h3>Realizar compra</h3>
+    <div class="row g-1">
+        <div class="col-6">
+            <img src="" alt="">
+        </div>
+        <div class="col-6">
+            <h4>Localidades</h4>
+            <table class="col-12">
+                <tr>
+                    <th class="">Localidades</th>
+                    <th class="">Cantidad</th>
+                    <th class="">Precio unitario</th>
+                    <th class="">Subtotal</th>
+                </tr>
+                @for (item of localidades; track $index) {
+                <tr>
+                    <td class="col-3">item </td>
+                    <td class="col-3">
+                        <div class="col-4">
+                            <input class="form-control form-control-sm " type="number">
+                        </div></td>
+                    <td class="col-3">$25000</td>
+                    <td class="col-3">$500000</td>
+                </tr>
+                }
+                <tr>
+            </table>
+            <div class="col-12 text-center">
+                <button class="btn btn-primary m-5 col-3">Agregar al carrito</button>
+                <button class="btn btn-success m-5 col-3">Comprar ahora</button>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <label>Entradas VIP: </label>
-        <select formControlName="vip" >
-            <option value="">Seleccione el número de entradas</option>
-            @for (item of vip; track $index) {
-                <option value="{{item}}">{{item}}</option>
-            }
-        </select>
-    </div>
-
-    <button type="submit">Comprar ahora</button>
-</form>
+</div>

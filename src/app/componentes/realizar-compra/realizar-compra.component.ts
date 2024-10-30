@@ -11,22 +11,20 @@ import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } fr
 })
 export class RealizarCompraComponent {
 
-  compraForm!: FormGroup;
-  general: number[];
-  vip: number[];
+  localidades = [0, 1, 2];
 
-  constructor(private formBuilder: FormBuilder) { 
+  compraForm!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
     this.crearFormulario();
-    this.general = [0,1,2,3,4,5];
-    this.vip = [0,1,2,3,4,5]
   }
 
   private crearFormulario() {
-    this.compraForm = this.formBuilder.group({
-      general: ['', [Validators.required]],
-      vip: ['', [Validators.required]]
-    },
-  );
+    //   this.compraForm = this.formBuilder.group({
+    //     general: ['', [Validators.required]],
+    //     vip: ['', [Validators.required]]
+    //   },
+    // );
   }
 
   public realizarCompra() {

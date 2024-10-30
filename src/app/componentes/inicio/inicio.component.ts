@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
-
+  items = [0,1,2,3,4,5];
 }

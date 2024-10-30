@@ -1,6 +1,5 @@
-<header>
-  <p>Página inicial de {{ title }}</p>
-  <ul>
+<app-header></app-header>
+<!-- <ul>
     <li><a routerLink="">Inicio</a></li>
     <li><a routerLink="/login">Login</a></li>
     <li><a routerLink="/registro">Registro</a></li>
@@ -9,9 +8,8 @@
     <li><a routerLink="/realizar-compra">Realizar Compra</a></li>
     <li><a routerLink="/crear-cupones">Crear Cupones</a></li>
     <li><a routerLink="/editar-cupones">Editar Cupones</a></li>
- </ul>
- </header>
- <router-outlet></router-outlet>
- <footer>
+ </ul> -->
+<router-outlet class="container-fluid"></router-outlet>
+<footer>
   <p>{{ footer }}</p>
- </footer>
+</footer>
