@@ -1,12 +1,32 @@
-<form [formGroup]="crearLogin" (ngSubmit)="iniciar()" novalidate="">
-    <div>
-        <label>Email: </label>
-        <input type="email" formControlName="email" />
+<div class="card col-5 mx-auto">
+    <div class="card-header">
+        Login
     </div>
-    <div>
-        <label>Contraseña: </label>
-        <input type="password" formControlName="password" />
+    <div class="card-body">
+        <h5 class="card-title text-center">Iniciar sesión en Unieventos</h5>
+        <form [formGroup]="crearLogin" (ngSubmit)="iniciar()" novalidate="">
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    formControlName="email">
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" [disabled]="crearLogin.invalid" class="btn btn-success col-10">Iniciar sesión</button>
+            </div>
+            <div class="text-center">
+                <a routerLink="/recuperacion" class="card-link">¿Has olvidado tu contraseña?</a>
+            </div>
+            <hr>
+            <div class="mb-3 text-center">
+                <button type="button" class="btn btn-primary col-10">Google</button>
+            </div>
+            <div class="mb-3 text-center">
+                <a type="button" class="btn btn-danger col-10" routerLink="/registro">Registrarse</a>
+            </div>
+        </form>
     </div>
-     
-    <button type="submit" [disabled]="crearLogin.invalid" >Iniciar Sesión</button>
-  </form>
+</div>
