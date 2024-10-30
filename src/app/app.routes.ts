@@ -8,10 +8,8 @@ import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { CompraRealizadaComponent } from './componentes/compra-realizada/compra-realizada.component';
 import { CrearCuponesComponent } from './componentes/crear-cupones/crear-cupones.component';
 import { CrearEventosComponent } from './componentes/crear-eventos/crear-eventos.component';
-import { CrearEventos2Component } from './componentes/crear-eventos2/crear-eventos2.component';
 import { EditarCuponesComponent } from './componentes/editar-cupones/editar-cupones.component';
 import { EditarEventosComponent } from './componentes/editar-eventos/editar-eventos.component';
-import { EditarEventos2Component } from './componentes/editar-eventos2/editar-eventos2.component';
 import { InfoEventoComponent } from './componentes/info-evento/info-evento.component';
 import { ListarCuponesComponent } from './componentes/listar-cupones/listar-cupones.component';
 import { ListarEventosComponent } from './componentes/listar-eventos/listar-eventos.component';
@@ -31,10 +29,8 @@ export const routes: Routes = [
    { path: 'compra-realizada', component: CompraRealizadaComponent },
    { path: 'crear-cupones', component: CrearCuponesComponent },
    { path: 'crear-eventos', component: CrearEventosComponent },
-   { path: 'crear-eventos2', component: CrearEventos2Component },
    { path: 'editar-cupones', component: EditarCuponesComponent },
    { path: 'editar-eventos', component: EditarEventosComponent },
-   { path: 'editar-eventos2', component: EditarEventos2Component },
    { path: 'info-evento', component: InfoEventoComponent },
    { path: '', component: InicioComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },
