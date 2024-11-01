@@ -20,6 +20,7 @@ import { RealizarCompraComponent } from './componentes/realizar-compra/realizar-
 import { RecuperacionComponent } from './componentes/recuperacion/recuperacion.component';
 import { ReportesAdminComponent } from './componentes/reportes-admin/reportes-admin.component';
 import { SoporteComponent } from './componentes/soporte/soporte.component';
+import { PqrsComponent } from './componentes/pqrs/pqrs.component';
 
 
 export const routes: Routes = [
@@ -44,5 +45,6 @@ export const routes: Routes = [
    { path: 'registro', component: RegistroComponent },
    { path: 'reportes-admin', component: ReportesAdminComponent },
    { path: 'soporte', component: SoporteComponent },
+   { path: 'pqrs', component: PqrsComponent },
    { path: "**", pathMatch: "full", redirectTo: "" }
 ];

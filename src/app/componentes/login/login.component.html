@@ -15,17 +15,19 @@
                 <input type="password" class="form-control" id="password" formControlName="password">
             </div>
             <div class="mb-3 text-center">
-                <button type="submit" [disabled]="crearLogin.invalid" class="btn btn-success col-10">Iniciar sesión</button>
+                <button type="submit" [disabled]="crearLogin.invalid" class="btn col-10" style="background-color: #089e00; color: white;">Iniciar sesión</button>
             </div>
             <div class="text-center">
                 <a routerLink="/recuperacion" class="card-link">¿Has olvidado tu contraseña?</a>
             </div>
             <hr>
             <div class="mb-3 text-center">
-                <button type="button" class="btn btn-primary col-10">Google</button>
+                <button type="button" class="btn btn-primary col-10">Iniciar con Google</button>
             </div>
             <div class="mb-3 text-center">
-                <a type="button" class="btn btn-danger col-10" routerLink="/registro">Registrarse</a>
+                <a type="button" class="btn col-10" routerLink="/registro" style="background-color: #ff8007; color: white;">
+                    Registrarse
+                </a>
             </div>
         </form>
     </div>
