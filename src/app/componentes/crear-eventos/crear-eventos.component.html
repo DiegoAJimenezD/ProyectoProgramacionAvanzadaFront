@@ -1,53 +1,79 @@
-<form [formGroup]="crearEventoForm" (ngSubmit)="crearEvento()" novalidate="">
-    <h1>CREAR EVENTOS</h1>
-    <div>
-        <label>Nombre: </label>
-        <input type="text" formControlName="nombre"/>
+<div class="card col-10 mx-auto mb-3">
+    <div class="card-header">
+        Crear eventos
     </div>
-    <div>
-        <label>Descripción: </label>
-        <textarea formControlName="descripcion"></textarea>   
-    </div>
-    <div>
-        <label>Tipo: </label>
-        <select formControlName="tipo" >
-            <option value="">Seleccione un tipo</option>
-            @for (item of tiposDeEvento; track $index) {
-                <option value="{{item}}">{{item}}</option>
-            }
-        </select>
-    </div>
-    <div>
-        <label>Dirección: </label>
-        <input type="text" formControlName="direccion"/>
-    </div>
-    <div>
-        <label>Ciudad: </label>
-        <input type="text" formControlName="ciudad"/>
-    </div>
-    
-    <div formArrayName="localidades">
-        <div *ngFor="let localidad of localidades.controls; let i = index" [formGroupName]="i">
-            <label>Nombre Localidad: </label>
-            <input formControlName="nombre" placeholder="Nombre de la localidad"/>
-            <label>Precio: </label>
-            <input type="number" formControlName="precio" placeholder="Precio"/>
-            <label>Cantidad: </label>
-            <input type="number" formControlName="cantidad" placeholder="Cantidad"/>
-            <button type="button" (click)="eliminarLocalidad(i)">Eliminar</button>
-        </div>
-    </div>
-    <button type="button" (click)="agregarLocalidad()">Agregar Localidad</button>
+    <div class="card-body">
+        <h5 class="card-title text-center">Crear eventos</h5>
+        <form [formGroup]="crearEventoForm" (ngSubmit)="crearEvento()" novalidate="">
+            <div class="mb-3 col-10 mx-auto">
+                <label>Nombre: </label>
+                <input type="text" formControlName="nombre" class="form-control"
+                    placeholder="Ingrese el nombre del evento" />
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Descripción: </label>
+                <textarea formControlName="descripcion" class="form-control"
+                    placeholder="Ingrese la descripcion del evento" rows="5"></textarea>
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Tipo: </label>
+                <select formControlName="tipo" class="form-control">
+                    <option value="">Seleccione un tipo</option>
+                    @for (item of tiposDeEvento; track $index) {
+                    <option value="{{item}}">{{item}}</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Dirección: </label>
+                <input type="text" formControlName="direccion" class="form-control"
+                    placeholder="Ingrese la dirección del evento" />
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Ciudad: </label>
+                <input type="text" formControlName="ciudad" class="form-control"
+                    placeholder="Ingrese la ciudad del evento" />
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label for="fechaCreacion">Fecha del evento:</label>
+                <input type="date" id="fechaCreacion" formControlName="fechaCreacion" class="form-control" required>
+            </div>
+            <div formArrayName="localidades" class="mb-3 col-10 mx-auto">
+                <div *ngFor="let localidad of localidades.controls; let i = index" [formGroupName]="i"
+                    class="mb-3 mx-auto">
+                    <label>Nombre Localidad: </label>
+                    <input formControlName="nombre" placeholder="Nombre de la localidad" class="form-control mb-2" />
 
-    <div>
-        <label>Imagen evento: </label>
-        <input type="file" (change)="onFileChange($event, 'portada')" />
-     </div>
-     
-     
-     <div>
-        <label>Imagen localidades: </label>
-        <input type="file" (change)="onFileChange($event, 'localidades')" />
-     </div>
-    <button type="submit" >Crear evento</button>
- </form>
+                    <label>Precio: </label>
+                    <input type="number" formControlName="precio" placeholder="Precio" class="form-control mb-2" />
+
+                    <label>Cantidad: </label>
+                    <input type="number" formControlName="cantidad" placeholder="Cantidad" class="form-control mb-2" />
+
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" (click)="eliminarLocalidad(i)" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <button type="button" (click)="agregarLocalidad()" class="btn btn-primary col-auto">Agregar
+                    Localidad</button>
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Imagen del evento: </label>
+                <input type="file" (change)="onFileChange($event, 'portada')" class="form-control" />
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Imagen de las localidades: </label>
+                <input type="file" (change)="onFileChange($event, 'localidades')" class="form-control" />
+            </div>
+            <div class="row g-0 col-11 justify-content-end">
+                <div class="mb-3 col-auto">
+                    <button type="submit" class="btn btn-success">Crear evento</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>

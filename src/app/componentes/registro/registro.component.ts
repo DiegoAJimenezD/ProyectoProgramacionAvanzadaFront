@@ -3,6 +3,7 @@ import { AbstractControlOptions, FormBuilder, FormGroup, ReactiveFormsModule, Va
 import { AuthService } from '../../servicios/auth/auth.service';
 import { CrearCuentaDTO } from '../../interfaces/crear-cuenta-dto';
 import Swal from 'sweetalert2';
+import { CrearCuentaDTO } from '../../interfaces/crear-cuenta-dto';
 
 @Component({
   selector: 'app-registro',
