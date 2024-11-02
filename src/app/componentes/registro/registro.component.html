@@ -27,7 +27,7 @@
                 <label class="form-label">Dirección: </label>
                 <input type="text" class="form-control" formControlName="direccion" />
             </div>
-            <div class="mb-3 col-6 mx-auto">
+            <!-- <div class="mb-3 col-6 mx-auto">
                 <label class="form-label">Contraseña: </label>
                 <input type="password" class="form-control" formControlName="password" />
             </div>
@@ -37,7 +37,7 @@
             </div>
             @if (registroForm.hasError('passwordsMismatch')) {
                 <div class="alert alert-danger" role="alert" >Las contraseñas no coinciden</div>
-            }
+            } -->
             <div class="mb-3 text-center">
                 <button type="button" class="btn btn-primary col-4" [disabled]="registroForm.invalid">Registrarse</button>
             </div>
