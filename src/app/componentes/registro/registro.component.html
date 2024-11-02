@@ -36,7 +36,7 @@
                 <input type="password" class="form-control" formControlName="confirmaPassword" />
             </div>
             @if (registroForm.hasError('passwordsMismatch')) {
-            <p>Las contraseñas no coinciden</p>
+                <div class="alert alert-danger" role="alert" >Las contraseñas no coinciden</div>
             }
             <div class="mb-3 text-center">
                 <button type="button" class="btn btn-primary col-4" [disabled]="registroForm.invalid">Registrarse</button>

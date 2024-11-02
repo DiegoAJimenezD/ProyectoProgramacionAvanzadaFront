@@ -1,1 +1,27 @@
-<p>compra-realizada works!</p>
+<div class="col-11 mx-auto py-1 mb-3">
+    <h3>Compra realizada</h3>
+    <div class="col-12 border row g-0 p-4">
+        <h4 class="col-12">Nombre del evento</h4>
+        <div class="col-4">
+            Fecha:
+        </div>
+        <div class="col-4">
+            Hora:
+        </div>
+        <div class="col-4">
+            Lugar:
+        </div>
+    </div>
+    <div class="col-12 row g-0 p-4">
+        @for (item of localidades; track $index) {
+            <h5>1 Entrada VIP</h5>
+            
+            <div class="col-4">
+                Valor:
+            </div>
+            <div class="col-4">
+                Lugar:
+            </div>
+        }
+    </div>
+</div>
