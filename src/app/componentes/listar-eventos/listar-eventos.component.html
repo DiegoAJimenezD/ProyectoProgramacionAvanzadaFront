@@ -1,1 +1,43 @@
-<p>listar-eventos works!</p>
+<div class="col-11 mx-auto py-1 mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Listar eventos</h3>
+        <button class="btn btn-success" routerLink="/crear-eventos">Crear evento</button>
+    </div>
+    <div class="mt-5">
+        <div class="card mb-3">
+            <table class="table table-bordered mb-0"> 
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Lugar</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Categoría</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Precio general</th>
+                        <th scope="col">Precio VIP</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of filas; track $index) {
+                    <tr>
+                        <td>Ejemplo Nombre 1</td>
+                        <td>Nombre lugar</td>
+                        <td>Nombre ciudad</td>
+                        <td>06-12-2002</td>
+                        <td>Nombre Categoría</td>
+                        <td>Nombre dirección</td>
+                        <td>Precio General</td>
+                        <td>Precio VIP</td>
+                        <td>
+                            <button class="btn btn-primary me-3" routerLink="/editar-eventos"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

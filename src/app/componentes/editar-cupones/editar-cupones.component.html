@@ -1,29 +1,45 @@
-<form [formGroup]="editarCuponForm" (ngSubmit)="editarCupon()" novalidate="">
-    <h1>EDITAR CUPONES</h1>
-    <div>
-        <label>Nombre del cupon: </label>
-        <input type="text" formControlName="nombre"/>
+<div class="card col-10 mx-auto">
+    <div class="card-header">
+        Editar cupones
     </div>
-    <div>
-        <label>Código del cupon: </label>
-        <input type="text" formControlName="codigo"> 
+    <div class="card-body">
+        <h5 class="card-title text-center">Editar cupones</h5>
+        <form [formGroup]="editarCuponForm" (ngSubmit)="editarCupon()" novalidate="">
+            <div class="mb-3 col-10 mx-auto">
+                <label>Nombre del cupon: </label>
+                <input type="text" class="form-control" formControlName="nombre" />
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Código del cupon: </label>
+                <input type="text" class="form-control" formControlName="codigo">
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Porcentaje de descuento del cupon: </label>
+                <input type="number" class="form-control" formControlName="porcentaje">
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label for="fecha_vencimiento">Fecha de vencimiento:</label>
+                <input type="date" id="fecha_vencimiento" class="form-control" formControlName="fecha_vencimiento" required>
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Tipo: </label>
+                <select formControlName="tipo" class="form-control">
+                    <option value="">Seleccione un tipo</option>
+                    @for (item of tiposDeCupon; track $index) {
+                    <option value="{{item}}">{{item}}</option>
+                    }
+                </select>
+            </div>
+            
+            
+            <div class="row g-0 col-11 text-end justify-content-end">
+                <div class="mb-3 mx-1 col-auto">
+                    <button type="submit" class="btn btn-primary col-auto">Cancelar</button>
+                </div>
+                <div class="mb-3 mx-1 col-auto">
+                    <button type="submit" class="btn btn-success col-auto">Editar cupón</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div>
-        <label>Porcentaje de descuento del cupon: </label>
-        <input type="number" formControlName="porcentaje"> 
-    </div>
-    <div>
-        <label>Fecha de vencimiento: </label>
-        <input type="date" formControlName="fecha_vencimiento"> 
-    </div>
-    <div>
-        <label>Tipo: </label>
-        <select formControlName="tipo" >
-            <option value="">Seleccione un tipo</option>
-            @for (item of tiposDeCupon; track $index) {
-                <option value="{{item}}">{{item}}</option>
-            }
-        </select>
-    </div>
-    <button type="submit" >Crear cupon</button>
- </form>
+</div>
