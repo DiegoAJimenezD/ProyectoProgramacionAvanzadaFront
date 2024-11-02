@@ -25,7 +25,10 @@
         <label>Ciudad: </label>
         <input type="text" formControlName="ciudad"/>
     </div>
-    
+    <div>
+        <label for="fechaCreacion">Fecha del evento:</label>
+        <input type="date" id="fechaCreacion" formControlName="fechaEvento" required>
+    </div>
     <div formArrayName="localidades">
         <div *ngFor="let localidad of localidades.controls; let i = index" [formGroupName]="i">
             <label>Nombre Localidad: </label>

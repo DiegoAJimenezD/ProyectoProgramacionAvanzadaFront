@@ -1,0 +1,26 @@
+<div class="card col-5 mx-auto">
+    <div class="card-header">
+        PQRS
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center">Genere una PQRS</h5>
+        <form [formGroup]="crearPqrs" (ngSubmit)="iniciar()" novalidate="">
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleSelectTipo" class="form-label">Selecciones un tipo:</label>
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="tipo">
+                    <option value="">Seleccione un tipo</option>
+                    @for (item of tiposDePQRS; track $index) {
+                        <option value="{{item}}">{{item}}</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label for="exampleInputDescripcion" class="form-label">Descripción:</label>
+                <textarea class="form-control" id="descripcion" formControlName="descripcion" rows="5"></textarea>  
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit"  class="btn btn-success col-4">Crear PQRS</button>
+            </div>
+        </form>
+    </div>
+</div>
