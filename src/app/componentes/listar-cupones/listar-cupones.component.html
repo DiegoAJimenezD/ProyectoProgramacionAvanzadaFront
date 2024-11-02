@@ -1,1 +1,37 @@
-<p>listar-cupones works!</p>
+<div class="col-11 mx-auto py-1 mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Listar cupones</h3>
+        <button class="btn btn-success" routerLink="/crear-cupones">Crear cupoón</button>
+    </div>
+    <div class="mt-5">
+        <div class="card mb-3">
+            <table class="table table-bordered mb-0"> 
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of filas; track $index) {
+                    <tr>
+                        <td>Ejemplo Nombre 1</td>
+                        <td>12345</td>
+                        <td>2024-11-02</td>
+                        <td>Ejemplo Tipo 1</td>
+                        <td>Activo</td>
+                        <td>
+                            <button class="btn btn-primary me-3" routerLink="/editar-cupones"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
