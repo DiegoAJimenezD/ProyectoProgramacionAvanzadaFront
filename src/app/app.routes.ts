@@ -21,6 +21,7 @@ import { RecuperacionComponent } from './componentes/recuperacion/recuperacion.c
 import { ReportesAdminComponent } from './componentes/reportes-admin/reportes-admin.component';
 import { SoporteComponent } from './componentes/soporte/soporte.component';
 import { PqrsComponent } from './componentes/pqrs/pqrs.component';
+import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
 
 
 export const routes: Routes = [
@@ -32,6 +33,7 @@ export const routes: Routes = [
    { path: 'crear-eventos', component: CrearEventosComponent },
    { path: 'editar-cupones', component: EditarCuponesComponent },
    { path: 'editar-eventos', component: EditarEventosComponent },
+   { path: 'editar-perfil', component: EditarPerfilComponent },
    { path: 'info-evento', component: InfoEventoComponent },
    { path: '', component: InicioComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },

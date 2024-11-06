@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './soporte.component.css'
 })
 export class SoporteComponent {
-
+items= [0,1,2,3,5,6,7]
 }
