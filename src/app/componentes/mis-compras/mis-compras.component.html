@@ -1,1 +1,48 @@
-<p>mis-compras works!</p>
+<div class="col-11 mx-auto py-1 mb-3">
+    <h3>Mis compras</h3>
+    @for (item of compras; track $index) {
+    <div class="mt-5">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <!-- Columna de la imagen del evento -->
+                <div class="col-md-2 d-flex align-items-center justify-content-center">
+                    <div class="border d-flex align-items-center justify-content-center"
+                        style="width: 100px; height: 100px;">
+                        <img src="..." class="card-img-top" alt="...">
+                    </div>
+                </div>
+
+                <!-- Columna de detalles del evento en dos secciones -->
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre del evento</h5>
+                        <div class="row">
+                            <!-- Primera sección: Información del evento con línea divisoria -->
+                            <div class="col-md-6 divider">
+                                <p class="card-text">
+                                    <strong>Fecha:</strong> <span class="text-danger">2024-12-06</span><br>
+                                    <strong>Hora:</strong> <span class="text-danger">18:00</span><br>
+                                    <strong>Ciudad:</strong> <span class="text-danger">Armenia</span>
+                                </p>
+                            </div>
+                            <!-- Segunda sección: Información del boleto -->
+                            <div class="col-md-6">
+                                <p class="card-text">
+                                    <strong>Cantidad de boletas:</strong> <span class="text-danger">5</span><br>
+                                    <strong>Ubicación boleta:</strong> <span class="text-danger">General</span><br>
+                                    <strong>Valor total:</strong> <span class="text-danger">$500000</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de botones -->
+                <div class="col-md-3 d-flex flex-row justify-content-around align-items-center p-3">
+                    <button class="btn btn-primary mb-2">Más información</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>
