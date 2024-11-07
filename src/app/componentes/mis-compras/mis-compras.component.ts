@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './mis-compras.component.css'
 })
 export class MisComprasComponent {
-
+  compras = [0,1,2,3]
 }

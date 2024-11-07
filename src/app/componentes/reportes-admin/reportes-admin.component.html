@@ -1,1 +1,56 @@
-<p>reportes-admin works!</p>
+<body>
+    <div class="container report-container mt-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3>Reportes</h3>
+        <select formControlName="tipo" class="form-control" style="width: 200px;">
+            <option value="">Seleccione un tipo</option>
+            @for (item of nombreEvento; track $index) {
+            <option value="{{item}}">{{item}}</option>
+            }
+        </select>
+      </div>
+      
+      <h4 class="mt-3">{{ selectedEvent ? 'Evento seleccionado: ' + selectedEvent : 'Seleccione un evento' }}</h4>
+
+      <button class="btn btn-primary btn-generate-pdf mb-4">Generar PDF</button>
+  
+      <div class="d-flex justify-content-around">
+        <!-- Card de ingresos por tipo de entrada -->
+        <div class="card text-center" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Ingresos por tipo de entrada</h5>
+            <div class="placeholder" style="height: 150px; background-color: #f0f0f0;"></div>
+            <div class="d-flex justify-content-center mt-2">
+              <span class="badge badge-secondary mx-1">VIP</span>
+              <span class="badge badge-secondary mx-1">General</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Card de porcentaje vendido por localidad -->
+        <div class="card text-center" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Porcentaje vendido por localidad</h5>
+            <div class="placeholder" style="height: 150px; background-color: #f0f0f0;"></div>
+            <div class="d-flex justify-content-center mt-2">
+              <span class="badge badge-secondary mx-1">VIP</span>
+              <span class="badge badge-secondary mx-1">General</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Card de dinero gastado por dinero ganado -->
+        <div class="card text-center" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Dinero gastado por dinero ganado</h5>
+            <div class="placeholder" style="height: 150px; background-color: #f0f0f0;"></div>
+            <div class="d-flex justify-content-center mt-2">
+              <span class="badge badge-secondary mx-1">Gastado</span>
+              <span class="badge badge-secondary mx-1">Ganado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
