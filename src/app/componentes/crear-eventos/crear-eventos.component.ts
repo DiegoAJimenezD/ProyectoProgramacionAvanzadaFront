@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
   selector: 'app-crear-eventos',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './crear-eventos.component.html',
   styleUrl: './crear-eventos.component.css'
 })
@@ -14,7 +16,7 @@ export class CrearEventosComponent {
 
   tiposDeEvento: string[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private location: Location) {
    this.crearFormulario();
    this.tiposDeEvento = ['Deporte', 'Concierto', 'Cultural', 'Moda', 'Belleza'];
   }
@@ -90,5 +92,9 @@ export class CrearEventosComponent {
     console.log(this.crearEventoForm.value);
    }
    
+       // Método para regresar a la página anterior
+       regresar() {
+        this.location.back();
+      }
 }
 

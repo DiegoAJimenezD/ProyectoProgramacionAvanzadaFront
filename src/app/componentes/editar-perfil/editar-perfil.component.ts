@@ -5,6 +5,7 @@ import { CrearCuentaDTO } from '../../interfaces/crear-cuenta-dto';
 import Swal from 'sweetalert2';
 import { RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-editar-perfil',
   standalone: true,

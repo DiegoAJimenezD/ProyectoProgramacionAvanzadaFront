@@ -68,12 +68,17 @@
                 <label>Imagen de las localidades: </label>
                 <input type="file" (change)="onFileChange($event, 'localidades')" class="form-control" />
             </div>
+            <!-- Fila con botones de Crear evento y Cancelar -->
             <div class="row g-0 col-11 justify-content-end">
                 <div class="mb-3 col-auto">
+                    <!-- Botón Cancelar con color azul y espacio -->
+                    <button (click)="regresar()" class="btn btn-secondary me-3">Cancelar</button>
+                </div>
+                <div class="mb-3 col-auto">
+                    <!-- Botón Crear evento -->
                     <button type="submit" class="btn btn-success">Crear evento</button>
                 </div>
             </div>
-            
         </form>
     </div>
 </div>

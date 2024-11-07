@@ -1,24 +1,29 @@
 <div class="col-11 mx-auto py-1 mb-3">
     <div class="row g-2">
-        <div id="carouselExampleAutoplaying" class="carousel slide" style="height: 50%;" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active" style="background-color: black;">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto2Carrusel.png?alt=media&token=c2696f20-4f6e-44cf-ab53-b14169a63c7e" class="d-block imgCarrusel mx-auto" alt="...">
-              </div>
-              <div class="carousel-item" style="background-color: black;">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto1Carrusel.png?alt=media&token=9e99ca32-21df-47e7-ad9b-7341ba9c2533" class="d-block imgCarrusel mx-auto" alt="...">
-              </div>
-              <div class="carousel-item" style="background-color: black;">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto3Carrusel.png?alt=media&token=069a4331-53ee-418e-a193-99a03a13ba60" class="d-block imgCarrusel mx-auto" alt="...">
-              </div>
+        <div id="carouselExampleIndicators" class="carousel slide custom-carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto2Carrusel.png?alt=media&token=c2696f20-4f6e-44cf-ab53-b14169a63c7e" class="d-block imgCarrusel mx-auto" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto1Carrusel.png?alt=media&token=9e99ca32-21df-47e7-ad9b-7341ba9c2533" class="d-block imgCarrusel mx-auto" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto3Carrusel.png?alt=media&token=069a4331-53ee-418e-a193-99a03a13ba60" class="d-block imgCarrusel mx-auto" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
             </button>
         </div>
         <div class="form-floating col-4">
@@ -60,7 +65,7 @@
                     </div>
                     <div class="col-6 text-center">
                         <p>Ciudad</p>
-                        <button class="btn btn-primary">Mas información</button>
+                        <button class="btn btn-primary" routerLink="/info-evento">Mas información</button>
                     </div>
                 </div>
             </div>

@@ -12,8 +12,7 @@
             </div>
             <div class="row g-0 col-11 text-end justify-content-end">
                 <div class="mb-3 mx-1 col-auto">
-                    <button type="submit" [disabled]="recuperarCuenta.invalid"
-                        class="btn btn-primary col-auto">Cancelar</button>
+                    <button (click)="regresar()" class="btn btn-secondary col-auto">Cancelar</button>
                 </div>
                 <div class="mb-3 mx-1 col-auto">
                     <button type="submit" [disabled]="recuperarCuenta.invalid"
