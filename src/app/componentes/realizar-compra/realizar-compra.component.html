@@ -31,8 +31,12 @@
                 <h5 class="col-auto">Valor total a pagar: </h5>
                 <p class="col-auto">$500000000</p>
             </div>
-            <div class="col-12 text-center mt-5 ">
+            <div class="col-12 text-center mt-5 d-flex justify-content-center gap-3">
+                <!-- Botón Cancelar -->
+                <button class="btn btn-secondary col-3" (click)="regresar()">Cancelar</button>
+                <!-- Botón Agregar al carrito -->
                 <button class="btn btn-primary col-3 mx-1">Agregar al carrito</button>
+                <!-- Botón Comprar ahora -->
                 <button class="btn btn-success col-3 mx-1">Comprar ahora</button>
             </div>
         </div>

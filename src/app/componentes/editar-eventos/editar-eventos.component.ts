@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
   selector: 'app-crear-eventos',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './editar-eventos.component.html',
   styleUrl: './editar-eventos.component.css'
 })
@@ -14,25 +16,25 @@ export class EditarEventosComponent {
 
   tiposDeEvento: string[];
 
-  constructor(private formBuilder: FormBuilder) {
-   this.editarFormulario();
-   this.tiposDeEvento = ['Deporte', 'Concierto', 'Cultural', 'Moda', 'Belleza'];
+  constructor(private formBuilder: FormBuilder, private location: Location) {
+    this.editarFormulario();
+    this.tiposDeEvento = ['Deporte', 'Concierto', 'Cultural', 'Moda', 'Belleza'];
   }
 
   editarEventoForm!: FormGroup;
 
   private editarFormulario() {
     this.editarEventoForm = this.formBuilder.group({
-     nombre: ['', [Validators.required,]],
-     descripcion: ['', [Validators.required]],
-     tipo: ['', [Validators.required]],
-     direccion: ['', [Validators.required]],
-     ciudad: ['', [Validators.required]],
-     fechaEvento: ['', [Validators.required]],
-     localidades: this.formBuilder.array([]),
-     imagenPortada: ['', [Validators.required]],
-     imagenLocalidades: ['', [Validators.required]]
-   });
+      nombre: ['', [Validators.required,]],
+      descripcion: ['', [Validators.required]],
+      tipo: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      ciudad: ['', [Validators.required]],
+      fechaEvento: ['', [Validators.required]],
+      localidades: this.formBuilder.array([]),
+      imagenPortada: ['', [Validators.required]],
+      imagenLocalidades: ['', [Validators.required]]
+    });
   }
 
 
@@ -70,13 +72,13 @@ export class EditarEventosComponent {
 
 
 
-  
-  public onFileChange(event:any, tipo:string){
+
+  public onFileChange(event: any, tipo: string) {
     if (event.target.files.length > 0) {
-      const files = event.target.files;     
-   
-   
-      switch(tipo){
+      const files = event.target.files;
+
+
+      switch (tipo) {
         case 'localidades':
           this.editarEventoForm.get('imagenLocalidades')?.setValue(files[0]);
           break;
@@ -85,10 +87,16 @@ export class EditarEventosComponent {
           break;
       }
     }
-   }
-   public editarEvento(){
+  }
+  public editarEvento() {
     console.log(this.editarEventoForm.value);
-   }
-   
+  }
+
+
+
+  // Método para regresar a la página anterior
+  regresar() {
+    this.location.back();
+  }
 }
 

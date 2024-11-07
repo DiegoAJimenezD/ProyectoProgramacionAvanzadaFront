@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <h5 class="card-title text-center mb-3">Crear una cuenta</h5>
-        <p class="card-subtitle text-center fs-6">Es rapido y sencillo</p>
+        <p class="card-subtitle text-center fs-6">Es rápido y sencillo</p>
         <hr class="col-11 mx-auto mt-1">
         <form [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate="" class="row m-0 p-0">
             <div class="mb-3 col-6 mx-auto">
@@ -27,8 +27,11 @@
                 <label class="form-label">Dirección: </label>
                 <input type="text" class="form-control" formControlName="direccion" />
             </div>
-            <div class="mb-3 text-center">
-                <button type="submit" class="btn btn-primary col-4" [disabled]="registroForm.invalid">Registrarse</button>
+            <div class="mb-3 text-center d-flex justify-content-center gap-3">
+                <!-- Botón Cancelar -->
+                <button type="submit" class="btn btn-secondary col-3" routerLink="/login">Cancelar</button>
+                <!-- Botón Registrarse -->
+                <button type="submit" class="btn btn-primary col-3" [disabled]="registroForm.invalid">Registrarse</button>
             </div>
         </form>
     </div>

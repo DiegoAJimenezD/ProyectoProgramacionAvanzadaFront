@@ -23,8 +23,9 @@
                 <label for="exampleInputPassword1" class="form-label">Confirmar contraseña:</label>
                 <input type="password" class="form-control" id="confirmarPassword" formControlName="confirmarPassword">
             </div>
-            <div class="mb-3 text-center">
-                <button type="submit" [disabled]="cambioPassword.invalid" class="btn btn-primary col-10">Cambiar contraseña</button>
+            <div class="mb-3 d-flex justify-content-center gap-3">
+                <button (click)="regresar()" class="btn btn-secondary col-4" routerLink="/login">Cancelar</button>
+                <button type="submit" [disabled]="cambioPassword.invalid" class="btn btn-primary col-4">Cambiar contraseña</button>
             </div>
         </form>
     </div>

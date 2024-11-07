@@ -1,4 +1,55 @@
-.imgCarrusel{
-    width: 75%;
-    height: 300px;
+/* Estilos personalizados para el carrusel */
+.custom-carousel {
+    width: 100%; /* El carrusel ocupa el 100% del ancho de la página */
+    height: 50vh; /* Puedes ajustar la altura, en este caso 50% de la altura de la ventana */
+    margin: 0; /* Eliminar cualquier margen alrededor del carrusel */
+    padding: 0; /* Eliminar cualquier relleno */
+    border-radius: 0; /* Eliminar bordes redondeados si no los quieres */
+    overflow: hidden;
+    box-shadow: none; /* Eliminar sombra, si la hay */
+}
+
+.custom-carousel .carousel-inner {
+    background-color: #000;
+    padding: 0; /* Eliminar relleno dentro del carrusel */
+    border-radius: 0; /* Eliminar bordes redondeados si no los quieres */
+}
+
+.custom-carousel .carousel-item img {
+    border-radius: 0; /* Eliminar bordes redondeados de las imágenes */
+    transition: transform 0.5s ease;
+    width: 90%; /* Imagen ocupa el 90% del ancho del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    display: block; /* Asegura que la imagen esté centrada */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+.custom-carousel .carousel-item img:hover {
+    transform: scale(1.05);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+@media (max-width: 768px) {
+    .custom-carousel {
+        height: auto;
+    }
+
+    .custom-carousel .carousel-item img {
+        max-height: 200px; /* Ajuste para pantallas pequeñas */
+    }
 }
