@@ -3,7 +3,6 @@ import { AbstractControlOptions, FormBuilder, FormGroup, ReactiveFormsModule, Va
 import { AuthService } from '../../servicios/auth/auth.service';
 import { CrearCuentaDTO } from '../../interfaces/crear-cuenta-dto';
 import Swal from 'sweetalert2';
-import { CrearCuentaDTO } from '../../interfaces/crear-cuenta-dto';
 
 @Component({
   selector: 'app-registro',
@@ -26,15 +25,11 @@ export class RegistroComponent {
       email: ['', [Validators.required, Validators.email]],
       direccion: ['', [Validators.required]],
       telefono: ['', [Validators.required, Validators.maxLength(10)]]
-      // password: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(7)]],
-      // confirmaPassword: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(7)]]
     }
-      // { validators: this.passwordsMatchValidator } as AbstractControlOptions
     );
   }
 
   public registrar() {
-    console.log(this.registroForm.value);
     const crearCuenta = this.registroForm.value as CrearCuentaDTO;
 
     this.authService.crearCuenta(crearCuenta).subscribe({
@@ -53,6 +48,8 @@ export class RegistroComponent {
           icon: 'error',
           confirmButtonText: 'Aceptar'
         })
+      },
+      complete(){
       }
     });
   }

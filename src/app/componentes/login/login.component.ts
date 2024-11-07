@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../servicios/auth/auth.service';
+import Swal from 'sweetalert2';
+import { LoginDTO } from '../../interfaces/login-dto';
+import { TokenService } from '../../servicios/token.service';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +17,36 @@ export class LoginComponent {
 
   crearLogin!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private tokenService: TokenService) {
     this.crearFormulario();
   }
 
   private crearFormulario() {
     this.crearLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(7)]],
+      password: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(7)]],
     },
-  );
+    );
   }
 
   public iniciar() {
-    console.log(this.crearLogin.value);
+    const loginDTO = this.crearLogin.value as LoginDTO;
+
+
+    this.authService.iniciarSesion(loginDTO).subscribe({
+      next: (data) => {
+        this.tokenService.login(data.respuesta.token);
+      },
+      error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta
+        });
+      },
+    });
+
+
+
   }
 }
