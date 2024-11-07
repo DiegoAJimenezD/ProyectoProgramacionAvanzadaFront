@@ -49,22 +49,27 @@
 <div class="col-11 mx-auto py-1 mb-3 row g-0 justify-content-between">
     <h3>Destacados</h3>
     @for (item of items; track $index) {
-    <div class="col-4 px-4 py-2">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-center">Card title</h5>
-                <div class="row">
-                    <div class="col-6 text-center">
-                        <h5>Fecha</h5>
-                    </div>
-                    <div class="col-6 text-center">
-                        <p>Ciudad</p>
-                        <button class="btn btn-primary">Mas información</button>
+        <div class="col-12 col-md-4 px-4 py-2 mb-3">
+            <div class="card shadow-lg border-0 rounded">
+                <img [src]="item?.imagenPortada" class="card-img-top rounded-top" alt="Imagen de evento">
+                <div class="card-body">
+                    <h5 class="card-title text-center fw-bold">{{item.nombre}}</h5>
+                    <div class="row p-2">
+                        <div class="col-6">
+                            <h6><strong>Ciudad:</strong> {{item.ciudad}}</h6>
+                            <h6><strong>Categoria:</strong> {{item.tipoEvento}}</h6>
+                        </div>
+                        <div class="col-6">
+                            <h6><strong>Fecha:</strong> {{item.fecha.split("T")[0]}}</h6>
+                            <h6><strong>Hora:</strong> {{item.fecha.split("T")[1]}}</h6>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary mt-3" (click)="openPage(item.id)">Más información</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        
     }
 </div>
