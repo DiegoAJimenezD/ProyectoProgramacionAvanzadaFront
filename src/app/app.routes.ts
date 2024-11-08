@@ -34,7 +34,7 @@ export const routes: Routes = [
    { path: 'editar-cupones', component: EditarCuponesComponent },
    { path: 'editar-eventos', component: EditarEventosComponent },
    { path: 'editar-perfil', component: EditarPerfilComponent },
-   { path: 'info-evento', component: InfoEventoComponent },
+   { path: 'info-evento/:id', component: InfoEventoComponent },
    { path: '', component: InicioComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },
    { path: 'listar-eventos', component: ListarEventosComponent },
