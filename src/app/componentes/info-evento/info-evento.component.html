@@ -32,8 +32,11 @@
                     <td>{{item.direccion}}</td>
                 </tr>
             </table>
-            <div class="col-12 text-end mt-5">
-                <button class="btn btn-success my-2">Realizar compra</button>
+            <div class="col-12 text-start">
+                <!-- Botón Cancelar con espacio a la derecha -->
+                <button (click)="regresar()" class="btn btn-secondary my-2 me-3">Cancelar</button>
+                <!-- Botón Realizar compra -->
+                <button class="btn btn-success my-2" routerLink="/realizar-compra">Realizar compra</button>
             </div>
         </div>
     </div>

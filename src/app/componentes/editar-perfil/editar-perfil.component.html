@@ -8,7 +8,7 @@
         <form [formGroup]="editarPerfil" (ngSubmit)="registrar()" novalidate="" class="row m-0 p-0">
             <div class="mb-3 col-6 mx-auto">
                 <label class="form-label">Cédula: </label>
-                <input type="text" class="form-control" formControlName="cedula" readonly/>
+                <input type="text" class="form-control" formControlName="cedula" readonly />
             </div>
             <div class="mb-3 col-6 mx-auto">
                 <label class="form-label">Nombre: </label>
@@ -27,8 +27,14 @@
                 <input type="text" class="form-control" formControlName="direccion" />
             </div>
             <div class="mb-3 text-center d-flex justify-content-center gap-3">
-                <button type="button" class="btn btn-primary col-3" [disabled]="editarPerfil.invalid">Actualizar</button>
-                <button type="button" class="btn col-3" style="background-color: #ff8007; color: white; ">Restablecer contraseña</button>
+                <!-- Botón Cancelar -->
+                <button type="submit" class="btn btn-secondary col-3" routerLink="/perfil">Cancelar</button>
+                <!-- Botón Actualizar -->
+                <button type="submit" class="btn btn-primary col-3"
+                    [disabled]="editarPerfil.invalid">Actualizar</button>
+                <!-- Botón Restablecer contraseña -->
+                <button type="submit" class="btn col-3" style="background-color: #ff8007; color: white;">Restablecer
+                    contraseña</button>
             </div>
         </form>
     </div>

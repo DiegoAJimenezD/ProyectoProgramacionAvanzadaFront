@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-mis-compras',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './mis-compras.component.html',
   styleUrl: './mis-compras.component.css'
 })

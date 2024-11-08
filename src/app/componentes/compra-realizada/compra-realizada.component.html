@@ -1,5 +1,8 @@
 <div class="col-11 mx-auto py-1 mb-3">
-    <h3>Compra realizada</h3>
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Compra realizada</h3>
+        <button type="button" class="btn btn-primary" routerLink="/qr-compra"><i class="bi bi-qr-code-scan"></i></button> <!-- Botón a la derecha -->
+    </div>
     <div class="col-12 border row g-0 p-4">
         <h4 class="col-12">Nombre del evento</h4>
         <div class="col-4">
@@ -23,5 +26,9 @@
                 Lugar:
             </div>
         }
+    </div>
+    <!-- Botón de regresar -->
+    <div class="d-flex justify-content-start">
+        <button (click)="regresar()" class="btn col-2 btn-secondary">Cancelar</button>
     </div>
 </div>
