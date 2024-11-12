@@ -1,79 +1,89 @@
 <div class="col-11 mx-auto py-1 mb-3">
     <div class="row g-2">
-        <div id="carouselExampleIndicators" class="carousel slide custom-carousel">
+        <div id="carouselExampleIndicators mb-1" class="carousel slide custom-carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto2Carrusel.png?alt=media&token=c2696f20-4f6e-44cf-ab53-b14169a63c7e" class="d-block imgCarrusel mx-auto" alt="...">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto2Carrusel.png?alt=media&token=c2696f20-4f6e-44cf-ab53-b14169a63c7e"
+                        class="d-block imgCarrusel mx-auto" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto1Carrusel.png?alt=media&token=9e99ca32-21df-47e7-ad9b-7341ba9c2533" class="d-block imgCarrusel mx-auto" alt="...">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto1Carrusel.png?alt=media&token=9e99ca32-21df-47e7-ad9b-7341ba9c2533"
+                        class="d-block imgCarrusel mx-auto" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto3Carrusel.png?alt=media&token=069a4331-53ee-418e-a193-99a03a13ba60" class="d-block imgCarrusel mx-auto" alt="...">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/foto3Carrusel.png?alt=media&token=069a4331-53ee-418e-a193-99a03a13ba60"
+                        class="d-block imgCarrusel mx-auto" alt="...">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class="form-floating col-4">
-            <input type="text" class="form-control" id="floatingInput">
-            <label for="floatingInput">Evento</label>
-        </div>
-        <div class="form-floating col-4">
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                <option selected>Seleccione el tipo de evento</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <label for="floatingSelect">Tipo de evento</label>
-        </div>
-        <div class="form-floating col-4">
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                <option selected>Seleccione la ciudad</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <label for="floatingSelect">Ciudad</label>
-        </div>
+        <form [formGroup]="formfilterEvents" novalidate="" class="row g-2">
+            <div class="form-floating col-4">
+                <input type="text" class="form-control" id="evento-label" (change)="filterEvents()" formControlName="nombre">
+                <label for="evento-label">Evento</label>
+            </div>
+            <div class="form-floating col-4">
+                <select class="form-select" id="tipo" (change)="filterEvents()" formControlName="tipo">
+                    <option value="" selected>Seleccione el tipo de evento</option>
+                    @for (item of tipos; track $index) {
+                        <option value="{{item.value}}">{{item.nombre}}</option>
+                    }
+                </select>
+                <label for="floatingSelect">Tipo de evento</label>
+            </div>
+            <div class="form-floating col-4">
+                <select class="form-select" id="floatingSelect" (change)="filterEvents()" formControlName="ciudad">
+                    <option value="" selected>Seleccione la ciudad</option>
+                    @for (item of ciudades; track $index) {
+                        <option value="{{item.value}}">{{item.nombre}}</option>
+                    }
+                </select>
+                <label for="floatingSelect">Ciudad</label>
+            </div>
+        </form>
     </div>
 </div>
 
-<div class="col-11 mx-auto py-1 mb-3 row g-0 justify-content-between">
+<div class="col-11 mx-auto py-1 mb-3 row g-0">
     <h3>Destacados</h3>
     @for (item of items; track $index) {
-        <div class="col-12 col-md-4 px-4 py-2 mb-3">
-            <div class="card shadow-lg border-0 rounded">
-                <img [src]="item?.imagenPortada" class="card-img-top rounded-top" alt="Imagen de evento">
-                <div class="card-body">
-                    <h5 class="card-title text-center fw-bold">{{item.nombre}}</h5>
-                    <div class="row p-2">
-                        <div class="col-6">
-                            <h6><strong>Ciudad:</strong> {{item.ciudad}}</h6>
-                            <h6><strong>Categoria:</strong> {{item.tipoEvento}}</h6>
-                        </div>
-                        <div class="col-6">
-                            <h6><strong>Fecha:</strong> {{item.fecha.split("T")[0]}}</h6>
-                            <h6><strong>Hora:</strong> {{item.fecha.split("T")[1]}}</h6>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-primary mt-3" (click)="openPage(item.id)">Más información</button>
-                        </div>
+    <div class="col-12 col-md-4 px-4 py-2 mb-3">
+        <div class="card shadow-lg border-0 rounded">
+            <img [src]="item?.imagenPortada" class="card-img-top rounded-top" alt="Imagen de evento">
+            <div class="card-body">
+                <h5 class="card-title text-center fw-bold">{{item.nombre}}</h5>
+                <div class="row p-2">
+                    <div class="col-6">
+                        <h6><strong>Ciudad:</strong> {{item.ciudad}}</h6>
+                        <h6><strong>Categoria:</strong> {{item.tipoEvento}}</h6>
+                    </div>
+                    <div class="col-6">
+                        <h6><strong>Fecha:</strong> {{item.fecha.split("T")[0]}}</h6>
+                        <h6><strong>Hora:</strong> {{item.fecha.split("T")[1]}}</h6>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button class="btn btn-primary mt-3" (click)="openPage(item.id)">Más información</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     }
 </div>

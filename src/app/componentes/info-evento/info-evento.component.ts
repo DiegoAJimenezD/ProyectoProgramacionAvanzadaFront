@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { EventoService } from '../../servicios/evento.service';
 import Swal from 'sweetalert2';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { PublicoService } from '../../servicios/publico.service';
 
 @Component({
   selector: 'app-info-evento',
@@ -13,8 +12,8 @@ import { Location } from '@angular/common';
 })
 export class InfoEventoComponent {
   item: any;
-  constructor(
-    private eventoService: EventoService,
+  constructor(private router:Router,
+    private publicoService: PublicoService,
     private activatedRoute: ActivatedRoute // Inyectar ActivatedRoute
   ){
   }
@@ -27,7 +26,7 @@ export class InfoEventoComponent {
   }
 
   public getEvent(id:string) {
-    this.eventoService.getEvent(id).subscribe({
+    this.publicoService.obtenerEvento(id).subscribe({
       next: (data) => {
         console.log(data);
         this.item = data.respuesta;
@@ -41,6 +40,6 @@ export class InfoEventoComponent {
   }
     // Método para regresar a la página anterior
     regresar() {
-      this.location.back();
+      this.router.navigate(['inicio']);
     }
 }
