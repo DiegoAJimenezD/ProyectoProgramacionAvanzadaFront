@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
+import { AdministradorService } from '../../servicios/administrador.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-eventos',
@@ -10,11 +12,25 @@ import { Location } from '@angular/common';
   styleUrl: './listar-eventos.component.css'
 })
 export class ListarEventosComponent {
-  filas  = [0,1,2,3]
+  eventos: any[] = [];
 
-  constructor(private location: Location) {
+  constructor(private location: Location, private adminService: AdministradorService) {
+    this.showEvents();
   }
   
+  public showEvents() {
+    this.adminService.listarEventosAdmin().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.eventos = data.respuesta;
+      },
+      error: (error) => {
+        Swal.fire(error.respuesta)
+        console.log(error);
+      },
+    });
+
+  }
       // Método para regresar a la página anterior
       regresar() {
         this.location.back();

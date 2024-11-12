@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../servicios/auth/auth.service';
 import Swal from 'sweetalert2';
-import { LoginDTO } from '../../interfaces/login-dto';
+import { LoginDTO } from '../../interfaces/Cuenta/login-dto';
 import { TokenService } from '../../servicios/token.service';
 
 @Component({
@@ -31,7 +31,6 @@ export class LoginComponent {
 
   public iniciar() {
     const loginDTO = this.crearLogin.value as LoginDTO;
-
 
     this.authService.iniciarSesion(loginDTO).subscribe({
       next: (data) => {
