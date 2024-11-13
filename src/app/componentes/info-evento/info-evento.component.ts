@@ -14,9 +14,6 @@ import { PublicoService } from '../../servicios/publico.service';
 
 export class InfoEventoComponent {
   item: any;
-  constructor(
-    private router: Router,
-    private eventoService: EventoService,
   constructor(private router:Router,
     private publicoService: PublicoService,
     private activatedRoute: ActivatedRoute // Inyectar ActivatedRoute
