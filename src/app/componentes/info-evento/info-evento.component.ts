@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 import { PublicoService } from '../../servicios/publico.service';
 
 @Component({
@@ -10,8 +11,12 @@ import { PublicoService } from '../../servicios/publico.service';
   templateUrl: './info-evento.component.html',
   styleUrl: './info-evento.component.css'
 })
+
 export class InfoEventoComponent {
   item: any;
+  constructor(
+    private router: Router,
+    private eventoService: EventoService,
   constructor(private router:Router,
     private publicoService: PublicoService,
     private activatedRoute: ActivatedRoute // Inyectar ActivatedRoute

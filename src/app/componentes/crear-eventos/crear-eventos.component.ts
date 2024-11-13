@@ -8,7 +8,6 @@ import { AdministradorService } from '../../servicios/administrador.service';
 import Swal from 'sweetalert2';
 import { CrearEventoDTO } from '../../interfaces/Evento/crear-evento-dto';
 
-
 @Component({
   selector: 'app-crear-eventos',
   standalone: true,
@@ -27,7 +26,8 @@ export class CrearEventosComponent {
     private formBuilder: FormBuilder,
     private location: Location,
     private publicoService: PublicoService,
-    private adminService: AdministradorService) {
+    private adminService: AdministradorService
+  ) {
     this.crearFormulario();
     this.listarTipos();
     this.listarCiudades();
@@ -35,6 +35,7 @@ export class CrearEventosComponent {
 
   crearEventoForm!: FormGroup;
 
+  // Método para crear el formulario
   private crearFormulario() {
     this.crearEventoForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
@@ -78,20 +79,32 @@ export class CrearEventosComponent {
     }
   }
 
+  // Manejo de cambio de archivo
   public onFileChange(event: any, tipo: string) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      tipo == 'localidades' ? (this.imagenLocalidades = file) : (this.imagenPortada = file);
-      tipo == 'portada' ? (this.imagenPortada = file) : (this.imagenPortada = file);
-
+      if (tipo === 'localidades') {
+        this.imagenLocalidades = file;
+      } else {
+        this.imagenPortada = file;
+      }
     }
   }
 
   public crearEvento() {
-    console.log(this.crearEventoForm.value);
-
-    const crearEventoDTO = this.crearEventoForm.value as CrearEventoDTO;
-
+    if (this.crearEventoForm.invalid) {
+      Swal.fire("Error", "Por favor, complete todos los campos obligatorios.", "error");
+      return;
+    }
+  
+    // Obtener el valor de la fecha con hora
+    const fecha = this.crearEventoForm.get('fecha')?.value;
+  
+    // Asegurarse de que el formato es correcto (solo un T entre la fecha y la hora)
+    const fechaConHora = fecha ? fecha : ''; // Asegúrate de que no haya doble T
+  
+    const crearEventoDTO = { ...this.crearEventoForm.value, fecha: fechaConHora } as CrearEventoDTO;
+  
     this.adminService.crearEvento(crearEventoDTO).subscribe({
       next: () => {
         Swal.fire("Exito!", "Se ha creado un nuevo evento.", "success");
@@ -100,14 +113,16 @@ export class CrearEventosComponent {
         Swal.fire("Error!", error.error.respuesta, "error");
       }
     });
-
   }
+  
+  
 
   // Método para regresar a la página anterior
   regresar() {
     this.location.back();
   }
 
+  // Listar tipos de eventos desde el servicio
   public listarTipos() {
     this.publicoService.listarTipos().subscribe({
       next: (data) => {
@@ -119,6 +134,7 @@ export class CrearEventosComponent {
     });
   }
 
+  // Listar ciudades desde el servicio
   public listarCiudades() {
     this.publicoService.listarCiudades().subscribe({
       next: (data) => {
@@ -130,13 +146,19 @@ export class CrearEventosComponent {
     });
   }
 
+  // Método para subir imágenes (portada o localidades)
   public subirImagen(tipo: string) {
     const formData = new FormData();
     const imagen = tipo == 'portada' ? this.imagenPortada : this.imagenLocalidades;
     const formControl = tipo == 'portada' ? 'imagenPortada' : 'imagenLocalidades';
-
-    formData.append('imagen', imagen!);
-
+  
+    if (!imagen) {
+      Swal.fire("Error!", "No se ha seleccionado una imagen.", "error");
+      return;
+    }
+  
+    formData.append('imagen', imagen);
+  
     this.adminService.subirImagen(formData).subscribe({
       next: (data) => {
         this.crearEventoForm.get(formControl)?.setValue(data.respuesta);
@@ -146,9 +168,6 @@ export class CrearEventosComponent {
         Swal.fire("Error!", error.error.respuesta, "error");
       }
     });
-
   }
-
-
+  
 }
-
