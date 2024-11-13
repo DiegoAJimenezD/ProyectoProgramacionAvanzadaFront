@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Buffer } from "buffer";
+import { BehaviorSubject } from 'rxjs';
 
 const TOKEN_KEY = "AuthToken";
 
@@ -11,6 +12,14 @@ const TOKEN_KEY = "AuthToken";
 export class TokenService {
 
   constructor(private router: Router) { }
+
+  private nombreUsuarioSource = new BehaviorSubject<string | null>(null);
+
+  nombreUsuario$ = this.nombreUsuarioSource.asObservable();
+
+  setNombreUsuario(nombre: string | null)  {
+    this.nombreUsuarioSource.next(nombre);
+  }
 
   public setToken(tokesessionStoragen: string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
@@ -30,6 +39,7 @@ export class TokenService {
 
   public logout() {
     window.sessionStorage.clear();
+    this.setNombreUsuario(null);
     this.router.navigate(["/login"]);
   }
 
@@ -59,8 +69,18 @@ export class TokenService {
     return "";
    }
 
+   public getNombre(): string {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.nombre;
+    }
+    return "";
+   }
+
    public login(token: string) {
     this.setToken(token);
+    this.setNombreUsuario(this.getNombre());
     this.router.navigate(["/"]);
  }
  

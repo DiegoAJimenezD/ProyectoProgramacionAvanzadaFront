@@ -4,23 +4,18 @@
     </div>
     <div class="card-body">
         <h5 class="card-title text-center">Crear eventos</h5>
-        <form [formGroup]="crearEventoForm" (ngSubmit)="crearEvento()" novalidate="">
+        <form [formGroup]="crearEventoForm" novalidate="">
             <div class="mb-3 col-10 mx-auto">
                 <label>Nombre: </label>
                 <input type="text" formControlName="nombre" class="form-control"
                     placeholder="Ingrese el nombre del evento" />
             </div>
             <div class="mb-3 col-10 mx-auto">
-                <label>Descripción: </label>
-                <textarea formControlName="descripcion" class="form-control"
-                    placeholder="Ingrese la descripcion del evento" rows="5"></textarea>
-            </div>
-            <div class="mb-3 col-10 mx-auto">
                 <label>Tipo: </label>
-                <select formControlName="tipo" class="form-control">
+                <select formControlName="tipoEvento" class="form-control">
                     <option value="">Seleccione un tipo</option>
-                    @for (item of tiposDeEvento; track $index) {
-                    <option value="{{item}}">{{item}}</option>
+                    @for (item of tipos; track $index) {
+                    <option value="{{item.value}}">{{item.nombre}}</option>
                     }
                 </select>
             </div>
@@ -31,12 +26,16 @@
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Ciudad: </label>
-                <input type="text" formControlName="ciudad" class="form-control"
-                    placeholder="Ingrese la ciudad del evento" />
+                <select formControlName="ciudad" class="form-control">
+                    <option value="">Seleccione una ciudad</option>
+                    @for (item of ciudades; track $index) {
+                    <option value="{{item.value}}">{{item.nombre}}</option>
+                    }
+                </select>
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label for="fechaCreacion">Fecha del evento:</label>
-                <input type="date" id="fechaCreacion" formControlName="fechaCreacion" class="form-control" required>
+                <input type="date" id="fechaCreacion" formControlName="fecha" class="form-control" required>
             </div>
             <div formArrayName="localidades" class="mb-3 col-10 mx-auto">
                 <div *ngFor="let localidad of localidades.controls; let i = index" [formGroupName]="i"
@@ -51,7 +50,8 @@
                     <input type="number" formControlName="cantidad" placeholder="Cantidad" class="form-control mb-2" />
 
                     <div class="d-flex justify-content-end mt-3">
-                        <button type="button" (click)="eliminarLocalidad(i)" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" (click)="eliminarLocalidad(i)" class="btn btn-outline-danger"><i
+                                class="bi bi-trash3"></i></button>
                     </div>
                 </div>
 
@@ -60,13 +60,30 @@
                 <button type="button" (click)="agregarLocalidad()" class="btn btn-primary col-auto">Agregar
                     Localidad</button>
             </div>
-            <div class="mb-3 col-10 mx-auto">
+            <!-- <div class="mb-3 col-10 mx-auto">
                 <label>Imagen del evento: </label>
                 <input type="file" (change)="onFileChange($event, 'portada')" class="form-control" />
+            </div> -->
+            <div class="mb-3 col-10 mx-auto">
+                <label class="form-label">Imagen portada: </label>
+                <div class="d-flex gap-2">
+                    <input type="file" (change)="onFileChange($event, 'portada')" class="form-control" />
+                    <button type="submit" class="btn btn-primary" (click)="subirImagen('portada')">
+                        <i class="bi bi-cloud-arrow-up-fill"></i></button>
+                </div>
             </div>
             <div class="mb-3 col-10 mx-auto">
-                <label>Imagen de las localidades: </label>
-                <input type="file" (change)="onFileChange($event, 'localidades')" class="form-control" />
+                <label class="form-label">Imagen de las localidades: </label>
+                <div class="d-flex gap-2">
+                    <input type="file" (change)="onFileChange($event, 'localidades')" class="form-control" />
+                    <button type="submit" class="btn btn-primary" (click)="subirImagen('localidades')">
+                        <i class="bi bi-cloud-arrow-up-fill"></i></button>
+                </div>
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Descripción: </label>
+                <textarea formControlName="descripcion" class="form-control"
+                    placeholder="Ingrese la descripcion del evento" rows="5"></textarea>
             </div>
             <!-- Fila con botones de Crear evento y Cancelar -->
             <div class="row g-0 col-11 justify-content-end">
@@ -76,7 +93,8 @@
                 </div>
                 <div class="mb-3 col-auto">
                     <!-- Botón Crear evento -->
-                    <button type="submit" class="btn btn-success">Crear evento</button>
+                    <button type="submit" class="btn btn-success" (click)="crearEvento()"
+                        [disabled]="crearEventoForm.invalid">Crear evento</button>
                 </div>
             </div>
         </form>

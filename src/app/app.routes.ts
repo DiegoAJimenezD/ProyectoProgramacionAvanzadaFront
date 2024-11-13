@@ -22,11 +22,14 @@ import { ReportesAdminComponent } from './componentes/reportes-admin/reportes-ad
 import { SoporteComponent } from './componentes/soporte/soporte.component';
 import { PqrsComponent } from './componentes/pqrs/pqrs.component';
 import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
+import { ActivarCuentaComponent } from './componentes/activar-cuenta/activar-cuenta.component';
 
 
 export const routes: Routes = [
+   { path: '', component: InicioComponent },
    { path: 'administrador', component: AdministradorComponent },
    { path: 'cambio', component: CambioComponent },
+   { path: 'activar-cuenta', component: ActivarCuentaComponent },
    { path: 'carrito', component: CarritoComponent },
    { path: 'compra-realizada', component: CompraRealizadaComponent },
    { path: 'crear-cupones', component: CrearCuponesComponent },
@@ -35,7 +38,6 @@ export const routes: Routes = [
    { path: 'editar-eventos', component: EditarEventosComponent },
    { path: 'editar-perfil', component: EditarPerfilComponent },
    { path: 'info-evento/:id', component: InfoEventoComponent },
-   { path: '', component: InicioComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },
    { path: 'listar-eventos', component: ListarEventosComponent },
    { path: 'login', component: LoginComponent },
