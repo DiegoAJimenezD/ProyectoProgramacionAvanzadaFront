@@ -34,9 +34,10 @@
                 </select>
             </div>
             <div class="mb-3 col-10 mx-auto">
-                <label for="fechaCreacion">Fecha del evento:</label>
-                <input type="date" id="fechaCreacion" formControlName="fecha" class="form-control" required>
+                <label for="fechaCreacion">Fecha y hora del evento:</label>
+                <input type="datetime-local" id="fechaCreacion" formControlName="fecha" class="form-control" required>
             </div>
+            
             <div formArrayName="localidades" class="mb-3 col-10 mx-auto">
                 <div *ngFor="let localidad of localidades.controls; let i = index" [formGroupName]="i"
                     class="mb-3 mx-auto">
