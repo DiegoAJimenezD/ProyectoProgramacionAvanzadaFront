@@ -17,17 +17,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (item of filas; track $index) {
+                    @for (item of cupones; track $index) {
                     <tr>
-                        <td>Ejemplo Nombre 1</td>
-                        <td>12345</td>
-                        <td>2024-11-02</td>
-                        <td>Ejemplo Tipo 1</td>
-                        <td>Activo</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.codigo}}</td>
+                        <td>{{item.fechaVencimiento.split("T")[0]}}</td>
+                        <td>{{item.tipoCupon}}</td>
+                        <td>{{item.estadoCupon}}</td>
                         <td>
                             <button class="btn btn-primary me-3" routerLink="/editar-cupones"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                        </td>
+                            <button class="btn btn-danger">
+                              <i class="bi bi-trash3"></i>
+                            </button>
+                          </td>
+                          
+                          
                     </tr>
                     }
                 </tbody>
