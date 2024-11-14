@@ -45,5 +45,30 @@ export class AdministradorService {
   public subirImagen(imagen: FormData): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.adminURL}/imagen/subir`, imagen);
   }
+
+  public crearCupon(crearCuponDTO: CrearEventoDTO): Observable<MensajeDTO> {
+    return this.http.post<MensajeDTO>(`${this.adminURL}/cupon/crear`, crearCuponDTO);
+  }
+ 
+ 
+  public actualizarCupon(editarCuponDTO: EditarEventoDTO): Observable<MensajeDTO> {
+    return this.http.put<MensajeDTO>(`${this.adminURL}/cupon/editar`, editarCuponDTO);
+  }
+ 
+ 
+  public obtenerCupon(id: string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.adminURL}/cupon/obtener/${id}`);
+  }
+ 
+ 
+  public eliminarCupon(id: string): Observable<MensajeDTO> {
+    return this.http.delete<MensajeDTO>(`${this.adminURL}/cupon/eliminar/${id}`);
+  }
+  
+
+   
+  public listarCuponesAdmin(): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.adminURL}/cupon/listar-todo`);
+  }
  
 }
