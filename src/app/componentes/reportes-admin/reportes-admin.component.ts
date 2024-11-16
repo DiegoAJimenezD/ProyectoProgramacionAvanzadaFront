@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
+import { PublicoService } from '../../servicios/publico.service';
 
 @Component({
   selector: 'app-reportes-admin',
@@ -12,14 +13,31 @@ import { Location } from '@angular/common';
 
 
 export class ReportesAdminComponent {
-  nombreEvento = ['Nombre 1', 'Nombre 2', 'Nombre 3']
+  tipos: any[] = [];
   selectedEvent: string = '';
   
-  constructor(private location: Location) {
+  constructor(
+    private location: Location,
+    private publicoService: PublicoService,
+  ) {
+
+    this.listarTipos();
   }
   
       // Método para regresar a la página anterior
       regresar() {
         this.location.back();
       }
+  
+        // Listar tipos de eventos desde el servicio
+  public listarTipos() {
+    this.publicoService.listarTipos().subscribe({
+      next: (data) => {
+        this.tipos = data.respuesta;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
 }

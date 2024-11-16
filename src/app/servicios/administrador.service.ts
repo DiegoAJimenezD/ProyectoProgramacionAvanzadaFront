@@ -70,5 +70,7 @@ export class AdministradorService {
   public listarCuponesAdmin(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.adminURL}/cupon/listar-todo`);
   }
+
+  
  
 }
