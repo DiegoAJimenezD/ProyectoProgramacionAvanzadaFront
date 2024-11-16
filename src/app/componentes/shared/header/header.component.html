@@ -12,7 +12,7 @@
 
     <!-- Right elements -->
     <div class="d-flex align-items-center">
-      @if (nombre != "" && nombre != null) {
+      @if (isLogged) {
       <!-- Icon -->
       <a class="text-reset me-3" routerLink="/carrito">
         <i class="bi bi-cart4"></i>
@@ -29,6 +29,9 @@
           <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
         </ul>
       </div>
+      }@else {
+      <button type="button" routerLink="/login" class="btn btn-info me-2">Login</button>
+      <button type="button" routerLink="/registro" class="btn btn-info">Registro</button>
       }
     </div>
     <!-- Right elements -->

@@ -12,10 +12,14 @@ import { TokenService } from '../../../servicios/token.service';
 })
 export class HeaderComponent {
   nombre: string | null = null;
+  isLogged = false;
 
   constructor(private tokenService: TokenService) {
     this.tokenService.nombreUsuario$.subscribe((nombre) => {
-      this.nombre = nombre;
+      this.isLogged = this.tokenService.isLogged();
+      if(this.isLogged){
+        this.nombre = this.tokenService.getNombre();
+      }
     });
 
   }

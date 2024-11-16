@@ -23,31 +23,37 @@ import { SoporteComponent } from './componentes/soporte/soporte.component';
 import { PqrsComponent } from './componentes/pqrs/pqrs.component';
 import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil.component';
 import { ActivarCuentaComponent } from './componentes/activar-cuenta/activar-cuenta.component';
+import { LoginGuard } from './servicios/guards/permiso.service';
+import { RolesGuard } from './servicios/guards/roles.service';
 
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
-   { path: 'administrador', component: AdministradorComponent },
-   { path: 'cambio', component: CambioComponent },
-   { path: 'activar-cuenta', component: ActivarCuentaComponent },
+   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+   { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
+   { path: 'activar-cuenta', component: ActivarCuentaComponent, canActivate: [LoginGuard]},
+   { path: 'cambio', component: CambioComponent, canActivate: [LoginGuard] },
+   { path: 'recuperacion', component: RecuperacionComponent, canActivate: [LoginGuard] },
+
+   { path: 'administrador', component: AdministradorComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'crear-eventos', component: CrearEventosComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'listar-eventos', component: ListarEventosComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'reportes-admin', component: ReportesAdminComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+
+   { path: 'mis-compras', component: MisComprasComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+   { path: 'compra-realizada/:id', component: CompraRealizadaComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+
+
    { path: 'carrito', component: CarritoComponent },
-   { path: 'compra-realizada', component: CompraRealizadaComponent },
    { path: 'crear-cupones', component: CrearCuponesComponent },
-   { path: 'crear-eventos', component: CrearEventosComponent },
    { path: 'editar-cupones', component: EditarCuponesComponent },
    { path: 'editar-eventos', component: EditarEventosComponent },
    { path: 'editar-perfil', component: EditarPerfilComponent },
    { path: 'info-evento/:id', component: InfoEventoComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },
-   { path: 'listar-eventos', component: ListarEventosComponent },
-   { path: 'login', component: LoginComponent },
-   { path: 'mis-compras', component: MisComprasComponent },
    { path: 'perfil', component: PerfilComponent },
    { path: 'qr-compra', component: QrCompraComponent },
    { path: 'realizar-compra', component: RealizarCompraComponent },
-   { path: 'recuperacion', component: RecuperacionComponent },
-   { path: 'registro', component: RegistroComponent },
-   { path: 'reportes-admin', component: ReportesAdminComponent },
    { path: 'soporte', component: SoporteComponent },
    { path: 'pqrs', component: PqrsComponent },
    { path: "**", pathMatch: "full", redirectTo: "" }
