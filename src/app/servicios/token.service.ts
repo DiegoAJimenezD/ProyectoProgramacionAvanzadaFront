@@ -17,7 +17,7 @@ export class TokenService {
 
   nombreUsuario$ = this.nombreUsuarioSource.asObservable();
 
-  setNombreUsuario(nombre: string | null)  {
+  setNombreUsuario(nombre: string | null) {
     this.nombreUsuarioSource.next(nombre);
   }
 
@@ -57,31 +57,42 @@ export class TokenService {
       return values.id;
     }
     return "";
-   }
-   
-   
-   public getRol(): string {
+  }
+
+
+  public getRol(): string {
     const token = this.getToken();
     if (token) {
       const values = this.decodePayload(token);
       return values.rol;
     }
     return "";
-   }
+  }
 
-   public getNombre(): string {
+  public getNombre(): string {
     const token = this.getToken();
     if (token) {
       const values = this.decodePayload(token);
       return values.nombre;
     }
     return "";
-   }
+  }
 
-   public login(token: string) {
+  public getEmail(): string {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.email;
+    }
+    return "";
+  }
+
+  public login(token: string) {
     this.setToken(token);
     this.setNombreUsuario(this.getNombre());
-    this.router.navigate(["/"]);
- }
- 
+    const rol = this.getRol();
+    let destino = rol == "ADMINISTRADOR" ? "/administrador" : "/inicio";
+    this.router.navigate([destino]);
+  }
+
 }

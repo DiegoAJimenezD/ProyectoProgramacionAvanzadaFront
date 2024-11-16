@@ -28,5 +28,9 @@ export class AuthService {
    public activarCuenta(activarCuenta: ActivarCuentaDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.authURL}/activar-cuenta`, activarCuenta);
    }
+
+   public refreshToken(activarCuenta: ActivarCuentaDTO): Observable<MensajeDTO> {
+    return this.http.post<MensajeDTO>(`${this.authURL}/activar-cuenta`, activarCuenta);
+   }
    
 }
