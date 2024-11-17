@@ -1,34 +1,39 @@
 <div class="col-11 mx-auto py-1 mb-3">
     <div class="d-flex justify-content-between align-items-center">
         <h3>Compra realizada</h3>
-        <button type="button" class="btn btn-primary" routerLink="/qr-compra"><i class="bi bi-qr-code-scan"></i></button> <!-- Botón a la derecha -->
+        <button type="button" class="btn btn-primary" (click)="abrirQr()"><i
+                class="bi bi-qr-code-scan"></i></button> <!-- Botón a la derecha -->
     </div>
+    @for (item of compra.items; track $index) {
     <div class="col-12 border row g-0 p-4">
-        <h4 class="col-12">Nombre del evento</h4>
+        <h4 class="col-12">{{item.evento.nombre}}</h4>
         <div class="col-4">
-            Fecha:
+            Fecha: {{item.evento.fecha.split("T")[0]}}
         </div>
         <div class="col-4">
-            Hora:
+            Hora: {{item.evento.fecha.split("T")[1]}}
         </div>
         <div class="col-4">
-            Lugar:
+            Lugar: {{item.evento.direccion}}
+        </div>
+        <div class="col-12 row g-0 mt-2 border p-2">
+            <table>
+                <tr>
+                    <th>Localidad</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+                <tr>
+                    <td>{{item.nombreLocalidad}}</td>
+                    <td>{{item.cantidad}}</td>
+                    <td>{{item.precio}}</td>
+                </tr>
+            </table>
         </div>
     </div>
-    <div class="col-12 row g-0 p-4">
-        @for (item of localidades; track $index) {
-            <h5>1 Entrada VIP</h5>
-            
-            <div class="col-4">
-                Valor:
-            </div>
-            <div class="col-4">
-                Lugar:
-            </div>
-        }
-    </div>
+    }
     <!-- Botón de regresar -->
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-start mt-2">
         <button (click)="regresar()" class="btn col-2 btn-secondary">Cancelar</button>
     </div>
 </div>
