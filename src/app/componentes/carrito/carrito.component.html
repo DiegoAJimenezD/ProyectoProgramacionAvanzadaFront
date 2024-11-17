@@ -1,36 +1,36 @@
 <div class="col-11 mx-auto py-1 mb-3">
     <h3>Carrito de compras</h3>
-    @for (item of carritos; track $index) {
+    @for (item of carritos.items; track $index) {
     <div class="mt-5">
         <div class="card mb-3">
             <div class="row g-0">
                 <!-- Columna de la imagen del evento -->
                 <div class="col-md-2 d-flex align-items-center justify-content-center">
                     <div class="border d-flex align-items-center justify-content-center"
-                        style="width: 100px; height: 100px;">
-                        <img src="..." class="card-img-top" alt="...">
+                        style="width: 100px;">
+                        <img [src]="item.evento.imagenPortada" class="card-img-top" alt="...">
                     </div>
                 </div>
 
                 <!-- Columna de detalles del evento en dos secciones -->
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h5 class="card-title">Nombre del evento</h5>
+                        <h5 class="card-title">{{item.evento.nombre}}</h5>
                         <div class="row">
                             <!-- Primera sección: Información del evento con línea divisoria -->
                             <div class="col-md-6 divider">
                                 <p class="card-text">
-                                    <strong>Fecha:</strong> <span class="text-danger">2024-12-06</span><br>
-                                    <strong>Hora:</strong> <span class="text-danger">18:00</span><br>
-                                    <strong>Ciudad:</strong> <span class="text-danger">Armenia</span>
+                                    <strong>Fecha: </strong> <span class="text-dark">{{item.evento.fecha.split("T")[0]}}</span><br>
+                                    <strong>Hora: </strong> <span class="text-dark">{{item.evento.fecha.split("T")[1]}}</span><br>
+                                    <strong>Ciudad: </strong> <span class="text-dark">{{item.evento.ciudad}}</span>
                                 </p>
                             </div>
                             <!-- Segunda sección: Información del boleto -->
                             <div class="col-md-6">
                                 <p class="card-text">
-                                    <strong>Cantidad de boletas:</strong> <span class="text-danger">5</span><br>
-                                    <strong>Ubicación boleta:</strong> <span class="text-danger">General</span><br>
-                                    <strong>Valor total:</strong> <span class="text-danger">$500000</span>
+                                    <strong>Localidad: </strong> <span class="text-dark">{{item.nombreLocalidad}}</span><br>
+                                    <strong>Cantidad de boletas: </strong> <span class="text-dark">{{item.cantidad}}</span><br>
+                                    <strong>Valor total: </strong> <span class="text-dark">{{item.cantidad * item.precio}}</span>
                                 </p>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                 <div class="col-md-3 d-flex flex-row justify-content-around align-items-center p-3">
                     <button class="btn btn-success mb-2">Realizar pago</button>
                     <button class="btn btn-primary mb-2" routerLink="/realizar-compra">Modificar</button>
-                    <button class="btn btn-outline-danger mb-2"><i class="bi bi-trash3"></i></button>
+                    <button class="btn btn-outline-danger mb-2"><i class="bi bi-trash3" (click)="eliminarItemCarrito(item.evento.id,item.nombreLocalidad)"></i></button>
                 </div>
             </div>
         </div>

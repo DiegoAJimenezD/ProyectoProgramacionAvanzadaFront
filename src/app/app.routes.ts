@@ -28,7 +28,7 @@ import { RolesGuard } from './servicios/guards/roles.service';
 
 
 export const routes: Routes = [
-   { path: '', component: InicioComponent },
+
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
    { path: 'activar-cuenta', component: ActivarCuentaComponent, canActivate: [LoginGuard]},
@@ -40,21 +40,23 @@ export const routes: Routes = [
    { path: 'listar-eventos', component: ListarEventosComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
    { path: 'reportes-admin', component: ReportesAdminComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
 
+   { path: 'info-evento/:id', component: InfoEventoComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
    { path: 'mis-compras', component: MisComprasComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
    { path: 'compra-realizada/:id', component: CompraRealizadaComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+   { path: 'qr-compra/:id', component: QrCompraComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+   { path: 'realizar-compra/:id', component: RealizarCompraComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+   { path: 'carrito', component: CarritoComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+   { path: 'perfil', component: PerfilComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
 
 
-   { path: 'carrito', component: CarritoComponent },
    { path: 'crear-cupones', component: CrearCuponesComponent },
    { path: 'editar-cupones/:id', component: EditarCuponesComponent },
    { path: 'editar-eventos/:id', component: EditarEventosComponent },
    { path: 'editar-perfil', component: EditarPerfilComponent },
-   { path: 'info-evento/:id', component: InfoEventoComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },
-   { path: 'perfil', component: PerfilComponent },
-   { path: 'qr-compra', component: QrCompraComponent },
-   { path: 'realizar-compra', component: RealizarCompraComponent },
-   { path: 'soporte', component: SoporteComponent },
    { path: 'pqrs', component: PqrsComponent },
-   { path: "**", pathMatch: "full", redirectTo: "" }
+
+   { path: '', component: InicioComponent },
+   { path: 'soporte', component: SoporteComponent },
+   { path: "**", pathMatch: "full", redirectTo: "" },
 ];
