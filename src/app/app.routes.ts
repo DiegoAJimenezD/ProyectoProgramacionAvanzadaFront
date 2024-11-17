@@ -46,8 +46,8 @@ export const routes: Routes = [
 
    { path: 'carrito', component: CarritoComponent },
    { path: 'crear-cupones', component: CrearCuponesComponent },
-   { path: 'editar-cupones', component: EditarCuponesComponent },
-   { path: 'editar-eventos', component: EditarEventosComponent },
+   { path: 'editar-cupones/:id', component: EditarCuponesComponent },
+   { path: 'editar-eventos/:id', component: EditarEventosComponent },
    { path: 'editar-perfil', component: EditarPerfilComponent },
    { path: 'info-evento/:id', component: InfoEventoComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },

@@ -25,8 +25,8 @@
                         <td>{{item.tipoCupon}}</td>
                         <td>{{item.estadoCupon}}</td>
                         <td>
-                            <button class="btn btn-primary me-3" routerLink="/editar-cupones"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-danger">
+                            <button class="btn btn-primary me-3" (click)="openEditarCupon(item.id);"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-danger" (click)="eliminarCupon(item.id);">
                               <i class="bi bi-trash3"></i>
                             </button>
                           </td>

@@ -1,45 +1,49 @@
 <div class="card col-10 mx-auto">
     <div class="card-header">
-        Crear cupones
+      Crear cupones
     </div>
     <div class="card-body">
-        <h5 class="card-title text-center">Crear cupones</h5>
-        <form [formGroup]="crearCuponForm" (ngSubmit)="crearCupon()" novalidate="">
-            <div class="mb-3 col-10 mx-auto">
-                <label>Nombre del cupon: </label>
-                <input type="text" class="form-control" formControlName="nombre" />
-            </div>
-            <div class="mb-3 col-10 mx-auto">
-                <label>Código del cupon: </label>
-                <input type="text" class="form-control" formControlName="codigo">
-            </div>
-            <div class="mb-3 col-10 mx-auto">
-                <label>Porcentaje de descuento del cupon: </label>
-                <input type="number" class="form-control" formControlName="porcentaje">
-            </div>
-            <div class="mb-3 col-10 mx-auto">
-                <label for="fecha_vencimiento">Fecha de vencimiento:</label>
-                <input type="date" id="fecha_vencimiento" class="form-control" formControlName="fecha_vencimiento" required>
-            </div>
-            <div class="mb-3 col-10 mx-auto">
-                <label>Tipo: </label>
-                <select formControlName="tipo" class="form-control">
-                    <option value="">Seleccione un tipo</option>
-                    @for (item of tiposDeCupon; track $index) {
-                    <option value="{{item}}">{{item}}</option>
-                    }
-                </select>
-            </div>
-            
-            
-            <div class="row g-0 col-11 text-end justify-content-end">
-                <div class="mb-3 mx-1 col-auto">
-                    <button (click)="regresar()" class="btn btn-secondary col-auto">Cancelar</button>
-                </div>
-                <div class="mb-3 mx-1 col-auto">
-                    <button type="submit" class="btn btn-success col-auto">Crear cupón</button>
-                </div>
-            </div>
-        </form>
+      <h5 class="card-title text-center">Crear cupones</h5>
+      <form [formGroup]="crearCuponForm" novalidate>
+        <div class="mb-3 col-10 mx-auto">
+          <label>Nombre del cupon: </label>
+          <input type="text" class="form-control" formControlName="nombre" />
+        </div>
+  
+        <div class="mb-3 col-10 mx-auto">
+          <label>Código del cupon: </label>
+          <input type="text" class="form-control" formControlName="codigo" />
+        </div>
+  
+        <div class="mb-3 col-10 mx-auto">
+          <label>Porcentaje de descuento del cupon: </label>
+          <input type="number" class="form-control" formControlName="descuento" />
+        </div>
+  
+        <div class="mb-3 col-10 mx-auto">
+          <label for="fecha_vencimiento">Fecha de vencimiento:</label>
+          <input type="datetime-local" id="fechaVencimiento" class="form-control" formControlName="fechaVencimiento" required />
+        </div>
+  
+        <div class="mb-3 col-10 mx-auto">
+          <label>Tipo: </label>
+          <select formControlName="tipoCupon" class="form-control">
+            <option value="">Seleccione un tipo</option>
+            @for (item of tiposDeCupon; track $index) {
+            <option value="{{item.value}}">{{item.nombre}}</option>
+            }
+          </select>
+        </div>
+  
+        <div class="row g-0 col-11 text-end justify-content-end">
+          <div class="mb-3 mx-1 col-auto">
+            <button (click)="regresar()" class="btn btn-secondary col-auto">Cancelar</button>
+          </div>
+          <div class="mb-3 mx-1 col-auto">
+            <button type="submit" (click)="crearCupon()" class="btn btn-success col-auto">Crear cupón</button>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
+  

@@ -3,12 +3,13 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8">
-                <p><strong>Nombre:</strong> Salomé Quintero Rodríguez</p>
-                <p><strong>Número de identificación:</strong> 1234567890</p>
-                <p><strong>Número telefónico:</strong> 3216549870</p>
-                <p><strong>Dirección de residencia:</strong> Barrio Bosques de Pinares Manzana A Casa B</p>
-                <p><strong>Correo electrónico:</strong> salome&#64;gmail.com</p>
-            </div>
+                <p><strong>Nombre:</strong> {{ nombre }}</p>
+                <p><strong>Número de identificación:</strong> {{ cedula }}</p>
+                <p><strong>Número telefónico:</strong> {{ telefono }}</p>
+                <p><strong>Dirección de residencia:</strong> {{ direccion }}</p>
+                <p><strong>Correo electrónico:</strong> {{ email }}</p>
+              </div>
+              
         </div>
         <div class="d-flex justify-content-center mt-4">
             <button class="btn btn-danger mx-2">Eliminar cuenta</button>

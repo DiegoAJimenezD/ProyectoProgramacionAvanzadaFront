@@ -7,26 +7,31 @@
         <form [formGroup]="editarCuponForm" (ngSubmit)="editarCupon()" novalidate="">
             <div class="mb-3 col-10 mx-auto">
                 <label>Nombre del cupon: </label>
-                <input type="text" class="form-control" formControlName="nombre" />
+                <input type="text" class="form-control" formControlName="nombre" [value]="cupon.nombre"/>
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Código del cupon: </label>
-                <input type="text" class="form-control" formControlName="codigo">
+                <input type="text" class="form-control" formControlName="codigo" [value]="cupon.codigo">
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Porcentaje de descuento del cupon: </label>
-                <input type="number" class="form-control" formControlName="porcentaje">
+                <input type="number" class="form-control" formControlName="descuento" [value]="cupon.descuento">
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label for="fecha_vencimiento">Fecha de vencimiento:</label>
-                <input type="date" id="fecha_vencimiento" class="form-control" formControlName="fecha_vencimiento" required>
+                <input type="datetime-local" id="fechaVencimiento" class="form-control" formControlName="fechaVencimiento" [value]="cupon.fechaVencimiento" required>
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Tipo: </label>
-                <select formControlName="tipo" class="form-control">
+                <select formControlName="tipoCupon" class="form-control">
                     <option value="">Seleccione un tipo</option>
                     @for (item of tiposDeCupon; track $index) {
-                    <option value="{{item}}">{{item}}</option>
+                        @if(item.value == cupon.tipoCupon){
+                            <option value="{{item.value}}" [selected]="true">{{item.nombre}}></option>
+                        }@else {
+                            <option value="{{item.value}}" [selected]="false">{{item.nombre}}</option>
+                        }
+
                     }
                 </select>
             </div>
@@ -37,7 +42,7 @@
                     <button (click)="regresar()" class="btn btn-secondary col-auto">Cancelar</button>
                 </div>
                 <div class="mb-3 mx-1 col-auto">
-                    <button type="submit" class="btn btn-success col-auto">Editar cupón</button>
+                    <button type="submit" class="btn btn-success col-auto" (click)="guardarCambios()">Editar cupón</button>
                 </div>
             </div>
         </form>
