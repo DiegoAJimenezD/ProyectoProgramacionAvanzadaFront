@@ -27,7 +27,7 @@
                     <option value="">Seleccione un tipo</option>
                     @for (item of tiposDeCupon; track $index) {
                         @if(item.value == cupon.tipoCupon){
-                            <option value="{{item.value}}" [selected]="true">{{item.nombre}}></option>
+                            <option value="{{item.value}}" [selected]="true">{{item.nombre}}</option>
                         }@else {
                             <option value="{{item.value}}" [selected]="false">{{item.nombre}}</option>
                         }
