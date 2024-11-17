@@ -4,6 +4,7 @@ import { TokenService } from '../../servicios/token.service';
 import { ClienteService } from '../../servicios/cliente.service';
 import Swal from 'sweetalert2';
 import { EliminarItemCarritoDTO } from '../../interfaces/Carrito/eliminar-item-carrito-dto';
+import { CrearOrdenDTO } from '../../interfaces/Orden/crear-orden-dto';
 
 @Component({
   selector: 'app-carrito',
@@ -46,6 +47,27 @@ export class CarritoComponent {
       next: (data) => {
         console.log(data);
         this.listarCarrito();
+      },
+      error: (error) => {
+        console.log(error.error);
+        Swal.fire("Error!", error.error.respuesta, "error");
+      }
+    });
+  }
+
+  public realizarPago(i: number) {
+    const codigoCliente = this.tokenService.getIDCuenta();
+    var item = {
+      "estadoOrden": "ACTIVO",
+      "idCliente": codigoCliente,
+      "items": this.carritos.items[i],
+      "total": this.carritos.items[i].precioTotal
+    }
+    const crearOrdenDTO = item as CrearOrdenDTO;
+
+    this.clienteService.crearOrden(crearOrdenDTO).subscribe({
+      next: (data) => {
+        console.log(data);
       },
       error: (error) => {
         console.log(error.error);

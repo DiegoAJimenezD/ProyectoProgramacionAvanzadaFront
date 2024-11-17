@@ -4,13 +4,14 @@ import { MensajeDTO } from '../interfaces/mensaje-dto';
 import { AgregarItemCarritoDTO } from '../interfaces/Carrito/agregar-item-carrito-dto';
 import { CrearCarritoDTO } from '../interfaces/Carrito/crear-carrito-dto';
 import { EliminarItemCarritoDTO } from '../interfaces/Carrito/eliminar-item-carrito-dto';
+import { CrearOrdenDTO } from '../interfaces/Orden/crear-orden-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
 
-  private adminURL = "http://localhost:8080/api/cliente";
+  private adminURL = "https://backend-m334.onrender.com/api/cliente";
 
   constructor(private http: HttpClient) { }
   
@@ -24,6 +25,9 @@ export class ClienteService {
   }
   public getQr(id: string | null){
     return `${this.adminURL}/orden/qr/${id}`;
+  }
+  public crearOrden(crearOrdenDTO: CrearOrdenDTO){
+    return this.http.post<MensajeDTO>(`${this.adminURL}/orden/crear`, crearOrdenDTO);
   }
   // Carrito
   public crearCarrito(crearCarritoDTO: CrearCarritoDTO){
