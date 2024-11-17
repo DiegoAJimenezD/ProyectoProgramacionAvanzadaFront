@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { MensajeDTO } from '../interfaces/mensaje-dto';
 import { CrearEventoDTO } from '../interfaces/Evento/crear-evento-dto';
 import { EditarEventoDTO } from '../interfaces/Evento/editar-evento-dto';
+import { CrearCuponDTO } from '../interfaces/Cupon/crear-cupon-dto';
+import { EditarCuponDTO } from '../interfaces/Cupon/editar-cupon-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -46,12 +48,12 @@ export class AdministradorService {
     return this.http.post<MensajeDTO>(`${this.adminURL}/imagen/subir`, imagen);
   }
 
-  public crearCupon(crearCuponDTO: CrearEventoDTO): Observable<MensajeDTO> {
+  public crearCupon(crearCuponDTO: CrearCuponDTO): Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.adminURL}/cupon/crear`, crearCuponDTO);
   }
  
  
-  public actualizarCupon(editarCuponDTO: EditarEventoDTO): Observable<MensajeDTO> {
+  public actualizarCupon(editarCuponDTO: EditarCuponDTO): Observable<MensajeDTO> {
     return this.http.put<MensajeDTO>(`${this.adminURL}/cupon/editar`, editarCuponDTO);
   }
  
@@ -67,7 +69,15 @@ export class AdministradorService {
   
 
    
-  public listarCuponesAdmin(): Observable<MensajeDTO> {
+  public listarTipoCupones(): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.adminURL}/cupon/obtener-tipos`);
+  }
+
+  public listarTipoEventos(): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.adminURL}/evento/obtener-tipos`);
+  }
+
+  public listarCupones(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.adminURL}/cupon/listar-todo`);
   }
 

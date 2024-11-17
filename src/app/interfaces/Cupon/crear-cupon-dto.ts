@@ -1,4 +1,4 @@
-export interface CrearCuponDto {
+export interface CrearCuponDTO {
     descuento: number,
     fechaVencimiento: string,
     codigo: string,

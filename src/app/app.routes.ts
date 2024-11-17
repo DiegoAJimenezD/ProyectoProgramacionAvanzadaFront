@@ -50,8 +50,8 @@ export const routes: Routes = [
 
 
    { path: 'crear-cupones', component: CrearCuponesComponent },
-   { path: 'editar-cupones', component: EditarCuponesComponent },
-   { path: 'editar-eventos', component: EditarEventosComponent },
+   { path: 'editar-cupones/:id', component: EditarCuponesComponent },
+   { path: 'editar-eventos/:id', component: EditarEventosComponent },
    { path: 'editar-perfil', component: EditarPerfilComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },
    { path: 'pqrs', component: PqrsComponent },
