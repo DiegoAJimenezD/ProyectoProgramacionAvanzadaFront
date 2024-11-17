@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Router, RouterLink} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FiltroEventoDTO } from '../../interfaces/Evento/filtro-evento-dto';
 import { PublicoService } from '../../servicios/publico.service';
+import { TokenService } from '../../servicios/token.service';
+import { ClienteService } from '../../servicios/cliente.service';
+import { CrearCarritoDTO } from '../../interfaces/Carrito/crear-carrito-dto';
 
 @Component({
   selector: 'app-inicio',
@@ -21,8 +24,10 @@ export class InicioComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private publicoService: PublicoService, 
-    private router:Router,
+    private publicoService: PublicoService,
+    private clienteService: ClienteService,
+    private tokenService: TokenService,
+    private router: Router,
   ) {
     this.showEvents();
     this.crearFormulario();
@@ -69,11 +74,28 @@ export class InicioComponent {
 
   }
 
-  public openPage(id: string){
-    this.router.navigate(['/info-evento/'+id])
+  public openPage(id: string) {
+    if (this.tokenService.isLogged()) {
+      var carrito = {'idUsuario': this.tokenService.getIDCuenta()} as CrearCarritoDTO;
+      this.clienteService.crearCarrito(carrito).subscribe({
+        next: (data) => {
+          console.log(data.respuesta);
+          this.router.navigate(['/info-evento/' + id]);
+        },
+        error: (error) => {
+          if(error.error.respuesta == "El carrito ya existe"){
+            this.router.navigate(['/info-evento/' + id]);
+          }else{
+            console.error(error);
+          }
+        },
+      });
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
-  public listarTipos(){
+  public listarTipos() {
     this.publicoService.listarTipos().subscribe({
       next: (data) => {
         this.tipos = data.respuesta;
@@ -82,9 +104,9 @@ export class InicioComponent {
         console.error(error);
       },
     });
-   }
-   
-   public listarCiudades(){
+  }
+
+  public listarCiudades() {
     this.publicoService.listarCiudades().subscribe({
       next: (data) => {
         this.ciudades = data.respuesta;
@@ -93,7 +115,7 @@ export class InicioComponent {
         console.error(error);
       },
     });
-   }
-   
-   
+  }
+
+
 }

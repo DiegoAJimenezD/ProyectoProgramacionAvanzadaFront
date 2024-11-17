@@ -14,20 +14,17 @@ import { PublicoService } from '../../servicios/publico.service';
 
 export class InfoEventoComponent {
   item: any;
-  constructor(private router:Router,
+  constructor(private router: Router,
     private publicoService: PublicoService,
     private activatedRoute: ActivatedRoute // Inyectar ActivatedRoute
-  ){
-  }
-
-  ngOnInit(): void {
+  ) {
     const id = this.activatedRoute.snapshot.paramMap.get('id'); // Obtener el id de la URL
     if (id) {
       this.getEvent(id); // Llamar al método con el id
     }
   }
 
-  public getEvent(id:string) {
+  public getEvent(id: string) {
     this.publicoService.obtenerEvento(id).subscribe({
       next: (data) => {
         console.log(data);
@@ -40,8 +37,13 @@ export class InfoEventoComponent {
     });
 
   }
-    // Método para regresar a la página anterior
-    regresar() {
-      this.router.navigate(['inicio']);
-    }
+
+  // Método para regresar a la página anterior
+  regresar() {
+    this.router.navigate(['inicio']);
+  }
+
+  public openRealizarCompra(id: string){
+      this.router.navigate(['/realizar-compra/'+id]);
+  }
 }
