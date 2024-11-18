@@ -6,6 +6,7 @@ import { CrearEventoDTO } from '../interfaces/Evento/crear-evento-dto';
 import { EditarEventoDTO } from '../interfaces/Evento/editar-evento-dto';
 import { CrearCuponDTO } from '../interfaces/Cupon/crear-cupon-dto';
 import { EditarCuponDTO } from '../interfaces/Cupon/editar-cupon-dto';
+import { CrearPqrDTO } from '../interfaces/Pqrs/crear-pqrs-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,8 @@ export class AdministradorService {
     return this.http.get<MensajeDTO>(`${this.adminURL}/cupon/listar-todo`);
   }
 
-  
- 
+
+  public listarPqrs(): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.adminURL}/pqr/listar-todo`);
+  }
 }
