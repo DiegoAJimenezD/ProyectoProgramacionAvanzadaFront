@@ -43,7 +43,12 @@ export const routes: Routes = [
    { path: 'administrador', component: AdministradorComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
    { path: 'crear-eventos', component: CrearEventosComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
    { path: 'listar-eventos', component: ListarEventosComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'listar-pqrs', component: ListarPqrsComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
    { path: 'reportes-admin', component: ReportesAdminComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'crear-cupones', component: CrearCuponesComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'editar-cupones/:id', component: EditarCuponesComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'editar-eventos/:id', component: EditarEventosComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
+   { path: 'listar-cupones', component: ListarCuponesComponent, canActivate: [RolesGuard], data: { expectedRole: ["ADMINISTRADOR"] } },
 
    { path: 'info-evento/:id', component: InfoEventoComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
    { path: 'mis-compras', component: MisComprasComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
@@ -52,20 +57,12 @@ export const routes: Routes = [
    { path: 'realizar-compra/:id', component: RealizarCompraComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
    { path: 'carrito', component: CarritoComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
    { path: 'perfil', component: PerfilComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+   { path: 'pago/:estado', component: PagoResultadosComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE"] } },
+   
+   { path: 'editar-perfil/:id', component: EditarPerfilComponent, canActivate: [RolesGuard], data: { expectedRole: ["CLIENTE","ADMINISTRADOR"] } },
 
-
-   { path: 'crear-cupones', component: CrearCuponesComponent },
-   { path: 'editar-cupones/:id', component: EditarCuponesComponent },
-   { path: 'editar-eventos/:id', component: EditarEventosComponent },
-   { path: 'editar-perfil/:id', component: EditarPerfilComponent },
-   { path: 'listar-cupones', component: ListarCuponesComponent },
    { path: 'pqrs', component: PqrsComponent },
-
-
-   { path: 'pago/:estado', component: PagoResultadosComponent },
-
    { path: '', component: InicioComponent },
-   { path: 'listar-pqrs', component: ListarPqrsComponent },
    { path: 'soporte', component: SoporteComponent },
    { path: "**", pathMatch: "full", redirectTo: "" },
 ];

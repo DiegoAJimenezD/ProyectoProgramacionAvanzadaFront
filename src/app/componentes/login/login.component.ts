@@ -45,4 +45,9 @@ export class LoginComponent {
       },
     });
   }
+
+  public abrirGoogle() {
+    var url = "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https://app-unieventos-frontend-uq.web.app/google/uri&response_type=code&client_id=377558172194-lcst36rbpvchue077eg9ouesip05ck8b.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&access_type=offline";
+    window.location.href = url;
+  }
 }
