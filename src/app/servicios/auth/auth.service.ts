@@ -16,7 +16,7 @@ import { ResponderPqrDTO } from '../../interfaces/Pqrs/responder-pqrs';
 
 export class AuthService {
 
-  private authURL = "http://localhost:8080/api/auth";
+  private authURL = "https://backend-m334.onrender.com/api/auth";
 
   constructor(private http: HttpClient) { }
 
