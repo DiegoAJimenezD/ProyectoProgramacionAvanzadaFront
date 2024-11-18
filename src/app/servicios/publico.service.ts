@@ -8,7 +8,7 @@ import { FiltroEventoDTO } from '../interfaces/Evento/filtro-evento-dto';
   providedIn: 'root'
 })
 export class PublicoService {
-  private publicoURL = "http://localhost:8080/api/evento";
+  private publicoURL = "https://backend-m334.onrender.com/api/evento";
 
 
   constructor(private http: HttpClient) { }

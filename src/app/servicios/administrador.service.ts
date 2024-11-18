@@ -13,7 +13,7 @@ import { EditarCuponDTO } from '../interfaces/Cupon/editar-cupon-dto';
 export class AdministradorService {
 
 
-  private adminURL = "http://localhost:8080/api/administrador";
+  private adminURL = "https://backend-m334.onrender.com/api/administrador";
 
 
   constructor(private http: HttpClient) { }

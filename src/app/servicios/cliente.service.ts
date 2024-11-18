@@ -5,6 +5,8 @@ import { TokenService } from './token.service';
 import { AgregarItemCarritoDTO } from '../interfaces/Carrito/agregar-item-carrito-dto';
 import { CrearCarritoDTO } from '../interfaces/Carrito/crear-carrito-dto';
 import { EliminarItemCarritoDTO } from '../interfaces/Carrito/eliminar-item-carrito-dto';
+import { CrearOrdenDTO } from '../interfaces/Orden/crear-orden-dto';
+import { EditarItemCarritoDTO } from '../interfaces/Carrito/editar-item-carrito-dto';
 
 
 @Injectable({
@@ -12,7 +14,7 @@ import { EliminarItemCarritoDTO } from '../interfaces/Carrito/eliminar-item-carr
 })
 export class ClienteService {
 
-  private adminURL = "http://localhost:8080/api/cliente";
+  private adminURL = "https://backend-m334.onrender.com/api/cliente";
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
   
@@ -32,6 +34,12 @@ export class ClienteService {
   public getQr(id: string | null){
     return `${this.adminURL}/orden/qr/${id}`;
   }
+  public crearOrden(crearOrdenDTO: CrearOrdenDTO){
+    return this.http.post<MensajeDTO>(`${this.adminURL}/orden/crear`, crearOrdenDTO);
+  }
+  public realizarPago(idOrden: string){
+    return this.http.post<MensajeDTO>(`${this.adminURL}/orden/realizar-pago`, {"idOrden": idOrden});
+  }
   // Carrito
   public crearCarrito(crearCarritoDTO: CrearCarritoDTO){
     return this.http.post<MensajeDTO>(`${this.adminURL}/carrito/crear`, crearCarritoDTO);
@@ -41,6 +49,9 @@ export class ClienteService {
   }
   public eliminarItemCarrito(eliminarItemCarritoDTO: EliminarItemCarritoDTO){
     return this.http.delete<MensajeDTO>(`${this.adminURL}/carrito/eliminar-item`,{"body": eliminarItemCarritoDTO});
+  }
+  public editarItemCarrito(editarItemCarritoDTO: EditarItemCarritoDTO){
+    return this.http.put<MensajeDTO>(`${this.adminURL}/carrito/editar-item`,editarItemCarritoDTO);
   }
    public listarCarrito(id: string){
     return this.http.get<MensajeDTO>(`${this.adminURL}/carrito/obtener/${id}`);
