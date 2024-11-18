@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <h5 class="card-title text-center">Genere una PQRS</h5>
-        <form [formGroup]="crearPqrs" (ngSubmit)="iniciar()" novalidate="">
+        <form [formGroup]="crearPqrs" (ngSubmit)="iniciar()" (ngSubmit)="enviar()" novalidate="">
             <div class="mb-3 col-10 mx-auto">
                 <label for="exampleSelectTipo" class="form-label">Selecciones un tipo:</label>
                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="tipo">

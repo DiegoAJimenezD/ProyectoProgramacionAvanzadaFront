@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
+import { recuperarDTO } from '../../interfaces/Cuenta/recuperar-cuenta-dto';
+import { AuthService } from '../../servicios/auth/auth.service';
+import Swal from 'sweetalert2';
+import { TokenService } from '../../servicios/token.service';
 
 @Component({
   selector: 'app-recuperacion',
@@ -14,7 +18,9 @@ import { Location } from '@angular/common';
 export class RecuperacionComponent {
   recuperarCuenta!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private location: Location) { 
+  constructor(private formBuilder: FormBuilder, private location: Location,
+    private authService: AuthService, private router: Router,
+  ) { 
     this.crearFormulario();
   }
 
@@ -24,6 +30,48 @@ export class RecuperacionComponent {
     },
   );
   }
+
+  public recuperarC() {
+    const recuperarDTO = this.recuperarCuenta.value as { email: string };
+    const email = recuperarDTO.email;
+  
+    if (!email) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, ingresa un email válido',
+      });
+      return;
+    }
+  
+    this.authService.recuperarContrasena(email).subscribe({
+      next: (data) => {
+        // Mostrar mensaje satisfactorio
+        Swal.fire({
+          icon: 'success',
+          title: 'Solicitud exitosa',
+          text: 'Se ha enviado un código de recuperación a tu correo. Por favor revisa tu bandeja de entrada.',
+          confirmButtonText: 'Ir a activar cuenta'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Redirigir a la página de activar cuenta
+            this.router.navigate(['/activar-cuenta']);
+          }
+        });
+      },
+      error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta || 'Ocurrió un error al enviar el código de recuperación',
+        });
+      },
+    });
+  }
+  
+  
+
+
 
   public recuperar() {
     console.log(this.recuperarCuenta.value);

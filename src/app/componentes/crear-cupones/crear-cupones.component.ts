@@ -67,6 +67,7 @@ public crearCupon() {
   this.adminService.crearCupon(nuevoCupon).subscribe({
     next: () => {
       Swal.fire("Éxito!", "Se ha creado un nuevo evento.", "success");
+      this.location.back(); 
     },
     error: (error) => {
       Swal.fire(error.respuesta)

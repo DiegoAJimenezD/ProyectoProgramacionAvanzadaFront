@@ -113,7 +113,7 @@ export class EditarEventosComponent implements OnInit {
     const localidadForm = this.formBuilder.group({
       id: [localidad.id || ''],
       nombre: [localidad.nombre || '', Validators.required],  // Cambié 'nombreL' a 'nombre'
-      cantidad: [localidad.cantidad || '', [Validators.required, Validators.min(1)]],
+      capacidadMaxima: [localidad.capacidadMaxima || '', [Validators.required, Validators.min(1)]],
       precio: [localidad.precio || '', [Validators.required, Validators.min(0)]]
     });
 
@@ -123,7 +123,7 @@ export class EditarEventosComponent implements OnInit {
   agregarLocalidad() {
     const nuevaLocalidad = this.formBuilder.group({
       nombre: ['', [Validators.required]],  // Cambié 'nombreL' a 'nombre'
-      cantidad: ['', [Validators.required, Validators.min(1)]],
+      capacidadMaxima: ['', [Validators.required, Validators.min(1)]],
       precio: ['', [Validators.required, Validators.min(0)]]
     });
     this.localidades.push(nuevaLocalidad);

@@ -5,6 +5,9 @@ import { TokenService } from './token.service';
 import { AgregarItemCarritoDTO } from '../interfaces/Carrito/agregar-item-carrito-dto';
 import { CrearCarritoDTO } from '../interfaces/Carrito/crear-carrito-dto';
 import { EliminarItemCarritoDTO } from '../interfaces/Carrito/eliminar-item-carrito-dto';
+import { CrearPqrDTO } from '../interfaces/Pqrs/crear-pqrs-dto';
+import { Observable } from 'rxjs';
+import { EditarCuentaDTO } from '../interfaces/Cuenta/editar-cuenta-dto';
 
 
 @Injectable({
@@ -44,6 +47,23 @@ export class ClienteService {
   }
    public listarCarrito(id: string){
     return this.http.get<MensajeDTO>(`${this.adminURL}/carrito/obtener/${id}`);
+  }
+
+  public crearPqr(pqrDTO: CrearPqrDTO): Observable<MensajeDTO> {
+    // La URL ya no lleva el idCliente
+    return this.http.post<MensajeDTO>(`${this.adminURL}/pqr/crear`, pqrDTO);
+  }
+  
+  public eliminarCuenta(id: string): Observable<MensajeDTO> {
+    return this.http.delete<MensajeDTO>(`${this.adminURL}/cuenta/eliminar/${id}`);
+  }
+  
+  public obtenerCuenta(id: string): Observable<MensajeDTO> {
+    return this.http.get<MensajeDTO>(`${this.adminURL}/cuenta/obtener/${id}`);
+  }
+
+  public actualizarCuenta(editarCuponDTO: EditarCuentaDTO): Observable<MensajeDTO> {
+    return this.http.put<MensajeDTO>(`${this.adminURL}/cuenta/editar-perfil`, editarCuponDTO);
   }
 
 }

@@ -14,6 +14,6 @@
   interface LocalidadDTO {
     id: string;
     nombre: string;
-    cantidad: number;
+    capacidadMaxima: number;
     precio: number;
   }
