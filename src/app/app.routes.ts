@@ -25,7 +25,11 @@ import { EditarPerfilComponent } from './componentes/editar-perfil/editar-perfil
 import { ActivarCuentaComponent } from './componentes/activar-cuenta/activar-cuenta.component';
 import { LoginGuard } from './servicios/guards/permiso.service';
 import { RolesGuard } from './servicios/guards/roles.service';
+
 import { ListarPqrsComponent } from './componentes/listar-pqrs/listar-pqrs.component';
+
+import { PagoResultadosComponent } from './componentes/pago-resultados/pago-resultados.component';
+
 
 
 export const routes: Routes = [
@@ -56,6 +60,9 @@ export const routes: Routes = [
    { path: 'editar-perfil/:id', component: EditarPerfilComponent },
    { path: 'listar-cupones', component: ListarCuponesComponent },
    { path: 'pqrs', component: PqrsComponent },
+
+
+   { path: 'pago/:estado', component: PagoResultadosComponent },
 
    { path: '', component: InicioComponent },
    { path: 'listar-pqrs', component: ListarPqrsComponent },

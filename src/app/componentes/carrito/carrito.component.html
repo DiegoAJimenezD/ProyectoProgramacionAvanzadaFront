@@ -1,13 +1,12 @@
 <div class="col-11 mx-auto py-1 mb-3">
     <h3>Carrito de compras</h3>
-    @for (item of carritos.items; track $index) {
+    @for (item of carritos.items; track $index; let i = $index) {
     <div class="mt-5">
         <div class="card mb-3">
             <div class="row g-0">
                 <!-- Columna de la imagen del evento -->
                 <div class="col-md-2 d-flex align-items-center justify-content-center">
-                    <div class="border d-flex align-items-center justify-content-center"
-                        style="width: 100px;">
+                    <div class="border d-flex align-items-center justify-content-center" style="width: 100px;">
                         <img [src]="item.evento.imagenPortada" class="card-img-top" alt="...">
                     </div>
                 </div>
@@ -20,17 +19,22 @@
                             <!-- Primera sección: Información del evento con línea divisoria -->
                             <div class="col-md-6 divider">
                                 <p class="card-text">
-                                    <strong>Fecha: </strong> <span class="text-dark">{{item.evento.fecha.split("T")[0]}}</span><br>
-                                    <strong>Hora: </strong> <span class="text-dark">{{item.evento.fecha.split("T")[1]}}</span><br>
+                                    <strong>Fecha: </strong> <span
+                                        class="text-dark">{{item.evento.fecha.split("T")[0]}}</span><br>
+                                    <strong>Hora: </strong> <span
+                                        class="text-dark">{{item.evento.fecha.split("T")[1]}}</span><br>
                                     <strong>Ciudad: </strong> <span class="text-dark">{{item.evento.ciudad}}</span>
                                 </p>
                             </div>
                             <!-- Segunda sección: Información del boleto -->
                             <div class="col-md-6">
                                 <p class="card-text">
-                                    <strong>Localidad: </strong> <span class="text-dark">{{item.nombreLocalidad}}</span><br>
-                                    <strong>Cantidad de boletas: </strong> <span class="text-dark">{{item.cantidad}}</span><br>
-                                    <strong>Valor total: </strong> <span class="text-dark">{{item.cantidad * item.precio}}</span>
+                                    <strong>Localidad: </strong> <span
+                                        class="text-dark">{{item.nombreLocalidad}}</span><br>
+                                    <strong>Cantidad de boletas: </strong> <span
+                                        class="text-dark">{{item.cantidad}}</span><br>
+                                    <strong>Valor total: </strong> <span class="text-dark">{{item.cantidad *
+                                        item.precio}}</span>
                                 </p>
                             </div>
                         </div>
@@ -39,12 +43,45 @@
 
                 <!-- Columna de botones -->
                 <div class="col-md-3 d-flex flex-row justify-content-around align-items-center p-3">
-                    <button class="btn btn-success mb-2">Realizar pago</button>
-                    <button class="btn btn-primary mb-2" routerLink="/realizar-compra">Modificar</button>
-                    <button class="btn btn-outline-danger mb-2"><i class="bi bi-trash3" (click)="eliminarItemCarrito(item.evento.id,item.nombreLocalidad)"></i></button>
+                    <button class="btn btn-success mb-2" (click)="realizarPago(i)">Realizar pago</button>
+                    <button class="btn btn-primary mb-2" (click)="abrirModal(item, i)">Modificar</button>
+                    <button class="btn btn-outline-danger mb-2"><i class="bi bi-trash3"
+                            (click)="eliminarItemCarrito(item.evento.id,item.nombreLocalidad)"></i></button>
                 </div>
             </div>
         </div>
     </div>
-}
+    }
+</div>
+
+<!-- Modal para editar localidad -->
+<div class="modal fade" tabindex="-1" [class.show]="isModalOpen" [style.display]="isModalOpen ? 'block' : 'none'"
+    role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Localidad</h5>
+                <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editarForm">
+                    <div class="mb-3">
+                        <label for="localidad" class="form-label">Localidad</label>
+                        <input id="localidad" type="text" class="form-control" formControlName="localidad"
+                            readonly>
+                            <input id="localidad" type="text" class="form-control" formControlName="idEvento"
+                            readonly [hidden]="true">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Cantidad</label>
+                        <input id="cantidad" type="number" class="form-control" formControlName="cantidad" min="1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="guardarCambios()">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
 </div>
