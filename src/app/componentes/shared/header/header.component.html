@@ -3,13 +3,21 @@
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Navbar brand -->
+    @if(rol == "ADMINISTRADOR"){
+    <a class="navbar-brand my-0 py-0 mt-lg-0 row g-0" routerLink="/Administrador">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/favicon.ico?alt=media&token=d49e7dcb-c0bc-408f-b428-d07f4e348a77"
+        class="col-auto" height="50" />
+      <h2 class="text-start my-auto col-auto">UNIEVENTOS</h2>
+    </a>
+    }@else {
     <a class="navbar-brand my-0 py-0 mt-lg-0 row g-0" routerLink="/inicio">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/unieventos-61dca.appspot.com/o/favicon.ico?alt=media&token=d49e7dcb-c0bc-408f-b428-d07f4e348a77"
         class="col-auto" height="50" />
       <h2 class="text-start my-auto col-auto">UNIEVENTOS</h2>
     </a>
-
+    }
     <!-- Right elements -->
     <div class="d-flex align-items-center">
       @if (isLogged) {
@@ -25,7 +33,9 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
           <li><a class="dropdown-item" routerLink="/perfil">Mi perfil</a></li>
+          @if(rol == "CLIENTE"){
           <li><a class="dropdown-item" routerLink="/mis-compras">Mis compras</a></li>
+          }
           <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
         </ul>
       </div>
