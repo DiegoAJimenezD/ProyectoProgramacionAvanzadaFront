@@ -34,4 +34,14 @@ export class ListarPqrsComponent {
       });
     }
 
+  // Método para abrir la edición del perfil
+  public openResponderPqr(id: string): void {
+    if (id) {
+      // Navega a la página de edición pasando el id del usuario
+      this.router.navigate(['/responder-pqrs', id]);
+    } else {
+      Swal.fire('Error', 'No se ha encontrado el ID del pqrs.', 'error');
+    }
+  }
+
 }

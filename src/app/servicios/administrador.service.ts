@@ -6,7 +6,8 @@ import { CrearEventoDTO } from '../interfaces/Evento/crear-evento-dto';
 import { EditarEventoDTO } from '../interfaces/Evento/editar-evento-dto';
 import { CrearCuponDTO } from '../interfaces/Cupon/crear-cupon-dto';
 import { EditarCuponDTO } from '../interfaces/Cupon/editar-cupon-dto';
-import { CrearPqrDTO } from '../interfaces/Pqrs/crear-pqrs-dto';
+import { TokenService } from './token.service';
+import { ResponderPqrDTO } from '../interfaces/Pqrs/responder-pqrs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,10 @@ import { CrearPqrDTO } from '../interfaces/Pqrs/crear-pqrs-dto';
 export class AdministradorService {
 
 
-  private adminURL = "https://backend-m334.onrender.com/api/administrador";
+  private adminURL = "http://localhost:8080/api/administrador";
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
  
  
   public crearEvento(crearEventoDTO: CrearEventoDTO): Observable<MensajeDTO> {
@@ -85,5 +86,13 @@ export class AdministradorService {
 
   public listarPqrs(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.adminURL}/pqr/listar-todo`);
+  }
+
+  public getPqr(id: string){
+    return this.http.get<MensajeDTO>(`${this.adminURL}/pqr/obtener/${id}`);
+  }
+
+  public responderPqr(responderPqrDTO: ResponderPqrDTO): Observable<MensajeDTO> {
+    return this.http.put<MensajeDTO>(`${this.adminURL}/pqr/responder`, responderPqrDTO);
   }
 }

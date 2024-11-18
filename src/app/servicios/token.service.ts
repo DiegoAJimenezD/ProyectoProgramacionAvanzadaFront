@@ -59,7 +59,6 @@ export class TokenService {
     return "";
   }
 
-
   public getRol(): string {
     const token = this.getToken();
     if (token) {

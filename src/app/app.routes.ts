@@ -29,6 +29,7 @@ import { RolesGuard } from './servicios/guards/roles.service';
 import { ListarPqrsComponent } from './componentes/listar-pqrs/listar-pqrs.component';
 
 import { PagoResultadosComponent } from './componentes/pago-resultados/pago-resultados.component';
+import { ResponderPqrsComponent } from './componentes/responder-pqrs/responder-pqrs.component';
 
 
 
@@ -66,6 +67,7 @@ export const routes: Routes = [
 
    { path: '', component: InicioComponent },
    { path: 'listar-pqrs', component: ListarPqrsComponent },
+   { path: 'responder-pqrs/:id', component: ResponderPqrsComponent },
    { path: 'soporte', component: SoporteComponent },
    { path: "**", pathMatch: "full", redirectTo: "" },
 ];
