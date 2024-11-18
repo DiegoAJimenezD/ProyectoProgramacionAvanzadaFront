@@ -7,55 +7,63 @@
         <form [formGroup]="editarEventoForm" (ngSubmit)="editarEvento()" novalidate="">
             <div class="mb-3 col-10 mx-auto">
                 <label>Nombre: </label>
-                <input type="text" formControlName="nombre" class="form-control"
+                <input type="text" formControlName="nombre" class="form-control" [value]="evento.nombre"
                     placeholder="Ingrese el nombre del evento" />
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Descripción: </label>
-                <textarea formControlName="descripcion" class="form-control"
+                <textarea formControlName="descripcion" class="form-control" [value]="evento.descripcion"
                     placeholder="Ingrese la descripcion del evento" rows="5"></textarea>
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Tipo: </label>
-                <select formControlName="tipo" class="form-control">
+                <select formControlName="tipoEvento" class="form-control">
                     <option value="">Seleccione un tipo</option>
                     @for (item of tiposDeEvento; track $index) {
-                    <option value="{{item}}">{{item}}</option>
+                        @if (item.nombre == evento.tipoEvento){
+                            <option value="{{item.value}}" [selected]="true">{{item.nombre}}</option>
+                        }@else {
+                            <option value="{{item.value}}" [selected]="false">{{item.nombre}}</option>
+                        }
+                    
                     }
                 </select>
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Dirección: </label>
-                <input type="text" formControlName="direccion" class="form-control"
+                <input type="text" formControlName="direccion" class="form-control" [value]="evento.direccion"
                     placeholder="Ingrese la dirección del evento" />
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label>Ciudad: </label>
-                <input type="text" formControlName="ciudad" class="form-control"
+                <input type="text" formControlName="ciudad" class="form-control" [value]="evento.ciudad"
                     placeholder="Ingrese la ciudad del evento" />
             </div>
             <div class="mb-3 col-10 mx-auto">
                 <label for="fechaEvento">Fecha del evento:</label>
-                <input type="date" id="fechaEvento" formControlName="fechaEvento" class="form-control" required>
+                <input type="datetime-local" id="fecha" formControlName="fecha" [value]="evento.fecha" class="form-control" required>
             </div>
             <div formArrayName="localidades" class="mb-3 col-10 mx-auto">
                 <div *ngFor="let localidad of localidades.controls; let i = index" [formGroupName]="i"
                     class="mb-3 mx-auto">
+                    
                     <label>Nombre Localidad: </label>
                     <input formControlName="nombre" placeholder="Nombre de la localidad" class="form-control mb-2" />
-
+            
                     <label>Precio: </label>
                     <input type="number" formControlName="precio" placeholder="Precio" class="form-control mb-2" />
-
+            
                     <label>Cantidad: </label>
                     <input type="number" formControlName="cantidad" placeholder="Cantidad" class="form-control mb-2" />
-
+            
                     <div class="d-flex justify-content-end mt-3">
-                        <button type="button" (click)="eliminarLocalidad(i)" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button>
+                        <button type="button" (click)="eliminarLocalidad(i)" class="btn btn-outline-danger">
+                            <i class="bi bi-trash3"></i>
+                        </button>
                     </div>
                 </div>
-
             </div>
+            
             <div class="mb-3 col-10 mx-auto">
                 <button type="button" (click)="agregarLocalidad()" class="btn btn-primary col-auto">Agregar
                     Localidad</button>
