@@ -1,5 +1,6 @@
 export interface CrearPqrDTO {
+    id: string;
     tipo: string,
     descripcion: string,
-    idCuenta: string
+    idCliente: string
 }

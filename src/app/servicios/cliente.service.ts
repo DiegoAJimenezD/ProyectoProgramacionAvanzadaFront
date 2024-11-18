@@ -18,7 +18,7 @@ import { EditarItemCarritoDTO } from '../interfaces/Carrito/editar-item-carrito-
 })
 export class ClienteService {
 
-  private adminURL = "https://backend-m334.onrender.com/api/cliente";
+  private adminURL = "http://localhost:8080/api/cliente";
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
   

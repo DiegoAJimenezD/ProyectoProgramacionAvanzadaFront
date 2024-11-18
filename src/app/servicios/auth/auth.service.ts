@@ -7,6 +7,7 @@ import { LoginDTO } from '../../interfaces/Cuenta/login-dto';
 import { ActivarCuentaDTO } from '../../interfaces/Cuenta/activar-cuenta-dto';
 import { CrearPqrDTO } from '../../interfaces/Pqrs/crear-pqrs-dto';
 import { recuperarDTO } from '../../interfaces/Cuenta/recuperar-cuenta-dto';
+import { ResponderPqrDTO } from '../../interfaces/Pqrs/responder-pqrs';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ import { recuperarDTO } from '../../interfaces/Cuenta/recuperar-cuenta-dto';
 
 export class AuthService {
 
-  private authURL = "https://backend-m334.onrender.com/api/auth";
+  private authURL = "http://localhost:8080/api/auth";
 
   constructor(private http: HttpClient) { }
 
@@ -43,5 +44,4 @@ export class AuthService {
     return this.http.post<MensajeDTO>(`${this.authURL}/recuperar-contrasena`, null, { params });
   }
   
-   
 }

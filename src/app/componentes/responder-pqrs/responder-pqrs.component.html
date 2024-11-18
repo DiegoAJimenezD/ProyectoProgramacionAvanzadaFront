@@ -1,1 +1,39 @@
-<p>responder-pqrs works!</p>
+<div class="card col-10 mx-auto mb-3">
+    <div class="card-header">
+        Crear eventos
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center">Crear eventos</h5>
+        <form [formGroup]="responderPqrForm" novalidate="">
+            <div class="row">
+                <div class="col-md-8">
+                    <p><strong>Id:</strong> {{ id }}</p>
+                    <p><strong>Tipo:</strong> {{ tipo }}</p>
+                    <p><strong>descripcion:</strong> {{ descripcion }}</p>
+                    <p><strong>Estado:</strong> {{ estado }}</p>
+                    <p><strong>Fecha creación:</strong> {{ fechaCreacion }}</p>
+                    <p><strong>Respuesta:</strong> {{ respuesta }}</p>
+                    <p><strong>idCliente:</strong> {{ idCliente }}</p>
+                  </div>
+                  
+            </div>
+            <div class="mb-3 col-10 mx-auto">
+                <label>Respuesta: </label>
+                <textarea formControlName="respuesta" class="form-control"
+                    placeholder="Ingrese la descripcion del evento" rows="5"></textarea>
+            </div>
+            <!-- Fila con botones de Crear evento y Cancelar -->
+            <div class="row g-0 col-11 justify-content-end">
+                <div class="mb-3 col-auto">
+                    <!-- Botón Cancelar con color azul y espacio -->
+                    <button (click)="regresar()" class="btn btn-secondary me-3">Cancelar</button>
+                </div>
+                <div class="mb-3 col-auto">
+                    <!-- Botón Crear evento -->
+                    <button type="submit" class="btn btn-success"
+                        [disabled]="responderPqrForm.invalid" (click)="responder()">Responder PQRS</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

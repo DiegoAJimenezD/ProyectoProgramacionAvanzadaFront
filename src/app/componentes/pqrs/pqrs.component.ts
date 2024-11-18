@@ -51,12 +51,11 @@ export class PqrsComponent {
     this.clienteService.crearPqr(pqrConIdCuenta).subscribe({
       next: (data) => {
         Swal.fire({
-          title: 'Cuenta creada',
+          title: 'PQRS creado',
           text: data.respuesta,
           icon: 'success',
           confirmButtonText: 'Aceptar'
         });
-        this.router.navigate(["/activar-cuenta"]);
       },
       error: (error) => {
         Swal.fire({

@@ -1,7 +1,6 @@
 <div class="col-11 mx-auto py-1 mb-3">
     <div class="d-flex justify-content-between align-items-center">
-        <h3>Listar cupones</h3>
-        <button class="btn btn-success" routerLink="/crear-cupones">Crear cupón</button>
+        <h3>Listar PQRS</h3>
     </div>
     <div class="mt-5">
         <div class="card mb-3">
@@ -26,7 +25,7 @@
                         <td>{{ item.fechaCreacion }}</td>
                         <td>
                             <button class="btn btn-warning">
-                                <i class="bi bi-arrow-repeat"></i> Responder
+                                <i class="bi bi-arrow-repeat" (click)="openResponderPqr(item.id);"></i> Responder
                             </button>
                         </td>
                     </tr>
